@@ -14,10 +14,5 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
-# Tell homebrew to not autoupdate every single time I run it (just once a week).
-export HOMEBREW_AUTO_UPDATE_SECS=604800
-
-
 # iTerm2.app extensions
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
