@@ -146,3 +146,14 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# Override broken apropos in Catalina
+# mkdir -p ~/workarounds
+# sed -e 66s@/usr/lib@@ /usr/bin/apropos > ~/workarounds/apropos.macos_10.15.2
+# diff /usr/bin/apropos ~/workarounds/apropos.macos_10.15.2
+# 66c66
+# <     for d in /var/cache/man $manpath /usr/lib
+# ---
+# >     for d in /var/cache/man $manpath 
+# chmod +x ~/workarounds/apropos.macos_10.15.2
+alias apropos=~/workarounds/apropos.macos_10.15.2%                    
