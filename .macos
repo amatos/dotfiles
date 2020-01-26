@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Adapted from Mathias Bynens
 # ~/.macos — https://mths.be/macos
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -925,27 +926,31 @@ defaults write org.m0k.transmission RandomPort -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
-	"Dock" \
-	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
-	"Mail" \
-	"Messages" \
-	"Opera" \
-	"Photos" \
-	"Safari" \
-	"SizeUp" \
-	"Spectacle" \
-	"SystemUIServer" \
-	"Transmission" \
-	"Tweetbot" \
-	"Twitter" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
-done
+# Restart affected applications if `--no-restart` flag is not present.
+if [[ ! ($* == *--no-restart*) ]]; then
+	for app in "Activity Monitor" \
+		"Address Book" \
+		"Calendar" \
+		"cfprefsd" \
+		"Contacts" \
+		"Dock" \
+		"Finder" \
+		"Google Chrome Canary" \
+		"Google Chrome" \
+		"Mail" \
+		"Messages" \
+		"Opera" \
+		"Photos" \
+		"Safari" \
+		"SizeUp" \
+		"Spectacle" \
+		"SystemUIServer" \
+		"Transmission" \
+		"Tweetbot" \
+		"Twitter" \
+		"iCal"; do
+		killall "${app}" &> /dev/null
+	done
+fi
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
