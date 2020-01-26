@@ -1,26 +1,7 @@
-# Activate antigen
-source /usr/local/share/antigen/antigen.zsh
-
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle pip
-antigen bundle command-not-found
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Load the theme.
-# antigen theme denysdovhan/spaceship-prompt
-
-# Tell Antigen that you're done.
-antigen apply
-
 # Load extensions
-# source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Activate plugins
 # plugins=(brew git history osx zsh-completions)
@@ -37,6 +18,6 @@ unset file;
 export HOMEBREW_AUTO_UPDATE_SECS=604800
 
 
-
+# iTerm2.app extensions
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
