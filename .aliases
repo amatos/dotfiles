@@ -156,4 +156,4 @@ alias path='echo -e ${PATH//:/\\n}'
 # ---
 # >     for d in /var/cache/man $manpath 
 # chmod +x ~/workarounds/apropos.macos_10.15.2
-alias apropos=~/workarounds/apropos.macos_10.15.2                    
+alias apropos=/usr/local/bin/apropos.10.15.2                   
