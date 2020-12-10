@@ -36,3 +36,6 @@ export GPG_TTY=$(tty);
 
 # Tell homebrew to not autoupdate every single time I run it (just once a week).
 export HOMEBREW_AUTO_UPDATE_SECS=604800
+
+# Set my GPG key
+export KEYID=0x09943C8F25C681F7

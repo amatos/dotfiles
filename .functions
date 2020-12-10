@@ -191,3 +191,38 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+# GPG/PGP -- make encrypting and decrypting files easier
+secret () {
+        output=~/"${1}".$(date +%s).enc
+        gpg --encrypt --armor \
+            --output ${output} \
+            -r  0x09943C8F25C681F7 \
+            "${1}" && echo "${1} -> ${output}"
+}
+
+reveal () {
+        output=$(echo "${1}" | rev | cut -c16- | rev)
+        gpg --decrypt \
+            --output ${output} \
+            "${1}" && echo "${1} -> ${output}"
+}
+
+function cidr {
+  whois -h "whois.arin.net" -- \
+  "n + $(curl -s https://icanhazip.com/)" | \
+    grep "CIDR:" }
+
+function gpgcard {
+	gpg --card-status
+}
+
+function path {
+  if [[ -d "${1}" ]] ; then
+    if [[ -z "${PATH}" ]] ; then
+      export PATH="${1}"
+    else
+      export PATH="${PATH}:${1}"
+    fi
+  fi
+}

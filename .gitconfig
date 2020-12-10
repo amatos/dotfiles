@@ -1,7 +1,7 @@
 [user]
 	name = Alberth Matos
 	email = alberth@matos.cc
-	signingkey = DB5DC91BB92C931D982DE1D1AAB5598725BD5F6B
+	signingkey = 0x09943C8F25C681F7
 
 [credential]
 	helper = osxkeychain
