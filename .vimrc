@@ -1,7 +1,38 @@
-" Use the Solarized Dark theme
-" set background=dark
-" colorscheme solarized
-" let g:solarized_termtrans=1
+if has('nvim')
+    " Neovim specific commands
+	set t_8f=[38;2;%lu;%lu;%lum
+	set t_8b=[48;2;%lu;%lu;%lum
+	set termguicolors
+	colorscheme cwcolors
+	syntax enable
+	" Set tag file if REPOBASE is set. This assumes you set the environment
+	" variable REPOBASE to reflect the base directory of your current project
+	" and generated your ctags file as $REPOBASE-objdir/tags.
+	if $REPOBASE != ""
+		set tags=$REPOBASE-objdir/tags
+	endif
+
+	" Bind <F10> to a function that shows the syntax highlighting group under the cursor.
+	map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
+	\       '> trans<' . synIDattr(synID(line("."),col("."),0),"name") .
+	\       "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+	" Highlight trailing spaces.
+	let c_space_errors=1
+	" Don't highlight the Next match while typing a regular expression search.
+	set noincsearch
+else
+    " Standard vim specific commands
+    " Use the Solarized Dark theme
+	set background=dark
+	colorscheme solarized
+	let g:solarized_termtrans=1
+	" Allow cursor keys in insert mode
+	set esckeys
+	" Enable syntax highlighting
+	syntax on
+
+endif
 
 " Make Vim more useful
 set nocompatible
@@ -9,8 +40,6 @@ set nocompatible
 set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
-" Allow cursor keys in insert mode
-set esckeys
 " Allow backspace in insert mode
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
@@ -42,8 +71,7 @@ set exrc
 set secure
 " Enable line numbers
 set number
-" Enable syntax highlighting
-syntax on
+
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces

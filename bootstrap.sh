@@ -6,6 +6,7 @@ git pull origin main;
 
 function doIt() {
 	rsync --exclude ".git/" \
+		--exclude "nvim/" \
 		--exclude ".DS_Store" \
 		--exclude ".osx" \
 		--exclude "bootstrap.sh" \
@@ -15,6 +16,8 @@ function doIt() {
 		--exclude "init" \
 		--exclude "brew.sh" \
 		-avh --no-perms . ~;
+	rsync -avh --no-perms "nvim/" ~/.config/nvim/ ~;
+	ln -s ~/.vimrc ~/.config/nvim/init.vim
 	source ~/.bash_profile;
 }
 
