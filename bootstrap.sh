@@ -18,17 +18,28 @@ function updateRepo() {
 
 function dotFiles() {
 	echo "Deploy .files"
-	rsync --exclude ".git/" \
-		--exclude "nvim/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE.md" \
-		--exclude "cobalt2" \
-		--exclude "init" \
-		--exclude "brew.sh" \
-		-ah --no-perms . ~;
+	CWD=`pwd`
+	pushd ~
+	ln -fs $CWD/aliases .aliases
+	ln -fs $CWD/bash_profile .bash_profile
+	ln -fs $CWD/bash_prompt .bash_prompt
+	ln -fs $CWD/bashrc .bashrc
+	ln -fs $CWD/editorconfig .editorconfig
+	ln -fs $CWD/exports .exports
+	ln -fs $CWD/functions .functions
+	ln -fs $CWD/gitattributes .gitattributes
+	ln -fs $CWD/gitconfig .gitconfig
+	ln -fs $CWD/gitignore .gitignore
+	ln -fs $CWD/gvimrc .gvimrc
+	ln -fs $CWD/inputrc .inputrc
+	ln -fs $CWD/path .path
+	ln -fs $CWD/screenrc .screenrc
+	ln -fs $CWD/tmux.conf .tmux.conf
+	ln -fs $CWD/vim .vim
+	ln -fs $CWD/vimrc .vimrc
+	ln -fs $CWD/wgetrc .wgetrc
+	ln -fs $CWD/zshrc .zshrc
+	popd
 	if [ ! -d ~/.config/nvim ];
 	then
 		mkdir -p ~/.config/nvim/
@@ -38,7 +49,7 @@ function dotFiles() {
 	# If it (~/.vimrc) doesn't exist, symlink nvim's init.vim to ~/.vimrc
 	if [ ! -f ~/.vimrc ];
 	then
-		ln -s ~/.vimrc ~/.config/nvim/init.vim
+		ln -fs ~/.vimrc ~/.config/nvim/init.vim
 	fi
 	source ~/.bash_profile;
 }
