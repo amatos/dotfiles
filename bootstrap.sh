@@ -9,6 +9,22 @@ function ohmyzsh() {
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 		rsync -ah --no-perms ./cobalt2/cobalt2.zsh-theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
 	fi
+
+}
+
+function ohmyfish {
+	echo "Checking for oh-my-fish"
+	CWD=$(pwd)
+	if [ ! -e ~/.config/fish ]; then
+		ln -s "$CWD"/fish ~/.config/fish
+	fi
+	if [ ! -e /usr/bin/fish ]; then
+		echo "Please install fish"
+	elif [ ! -e ~/.local/share/omf ]; then
+		echo "Oh-my-fish not found.  Deploying."
+		ln -s "$CWD"/ohmyfish ~/.config/omf
+		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+	fi
 }
 
 function updateRepo() {
@@ -81,9 +97,11 @@ function dotFiles() {
 
 updateRepo;
 ohmyzsh;
+ohmyfish;
 dotFiles;
 
 unset dotFiles;
+unset ohmyfish;
 unset ohmyzsh;
 unset updateRepo;
 
