@@ -2,8 +2,9 @@
 
 function ohmyzsh() {
 	echo "Checking for oh-my-zsh"
-	if [ -f /usr/bin/zsh ] && [ ! -d ~/.oh-my-zsh ];
-	then
+	if [ ! -e /usr/bin/zsh ]; then
+		echo "Please install zsh"
+	elif [ ! -e ~/.oh-my-zsh ]; then
 		echo "Oh-my-zsh not found.  Deploying."
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 		rsync -ah --no-perms ./cobalt2/cobalt2.zsh-theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
@@ -15,38 +16,63 @@ function updateRepo() {
 	git pull --quiet origin main;
 }
 
-function dotFiles() {
-	echo "Deploy .files"
+function link() {
+	# symlink a file to ~ from the called directory.
+	# Takes 1 required and 1 optional parameter.
+	# If the 2nd parameter is not set, assume the destination name to be .$1
+	# Required:
+	# $1 as file to be linked to.
+	# Optional
+	# $2 as the symlink name.
+	# e.g. if $1=foo, this will symlink ~/.foo to foo
+	# e.g. if $1=foo $2=bar, this will symlink ~/bar to foo
+
+	# Get current directory, then cd to ~
 	CWD=$(pwd)
-	pushd ~ || exit
-	ln -fs "$CWD"/aliases .aliases
-	ln -fs "$CWD"/bash_profile .bash_profile
-	ln -fs "$CWD"/bash_prompt .bash_prompt
-	ln -fs "$CWD"/bashrc .bashrc
-	ln -fs "$CWD"/editorconfig .editorconfig
-	ln -fs "$CWD"/exports .exports
-	ln -fs "$CWD"/functions .functions
-	ln -fs "$CWD"/gitattributes .gitattributes
-	ln -fs "$CWD"/gitconfig .gitconfig
-	ln -fs "$CWD"/gitignore .gitignore
-	ln -fs "$CWD"/gvimrc .gvimrc
-	ln -fs "$CWD"/inputrc .inputrc
-	ln -fs "$CWD"/path .path
-	ln -fs "$CWD"/screenrc .screenrc
-	ln -fs "$CWD"/tmux.conf .tmux.conf
-	ln -fs "$CWD"/vim .vim
-	ln -fs "$CWD"/vimrc .vimrc
-	ln -fs "$CWD"/wgetrc .wgetrc
-	ln -fs "$CWD"/zshrc .zshrc
-	popd || exit
-	if [ ! -d ~/.config/nvim ];
-	then
-		mkdir -p ~/.config/nvim/
+	cd ~ || exit
+	# Check if .$1 exists and is not a symlink
+	if [ -f ."${1}" ] && [ ! -L ."${1}" ]; then
+		timestamp=$(date +%s-%N)
+		echo "Found a file named .${1}.  Moving it out of the way as .${1}.${timestamp}."
+		mv ."${1}" ."${1}"."${timestamp}"
 	fi
-	# Copy over the nvim directories
-	rsync -ah --no-perms "nvim/" ~/.config/nvim/
+	# Create the symlink
+	if [ "${2}" ]; then
+		ln -fs "${CWD}"/"${1}" "${2}"
+	else
+		ln -fs "${CWD}"/"${1}" ."${1}"
+	fi
+	cd ~- || exit
+}
+
+function dotFiles() {
+	CWD=$(pwd)
+	echo "Deploy .files"
+	link aliases
+	link bash_profile
+	link bash_prompt
+	link bashrc
+	link editorconfig
+	link exports
+	link functions
+	link gitattributes
+	link gitconfig
+	link gitignore
+	link gvimrc
+	link inputrc
+	link path
+	link screenrc
+	link tmux.conf
+	link vimrc
+	link wgetrc
+	link zshrc
+
+	if [ ! -e ~/.config/nvim ];
+	then
+		ln -s "$CWD"/nvim ~/.config/nvim
+	fi
 	# If it (~/.vimrc) doesn't exist, symlink nvim's init.vim to ~/.vimrc
-	if [ ! -f ~/.vimrc ];
+	if [ ! -e ~/.vimrc ];
 	then
 		ln -fs ~/.vimrc ~/.config/nvim/init.vim
 	fi
