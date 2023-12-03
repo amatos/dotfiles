@@ -44,3 +44,6 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# In case I forget to sudo mkinitcpio
+alias mkinitcpio='sudo mkinitcpio '

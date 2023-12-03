@@ -68,3 +68,11 @@ for file in ~/.{aliases,exports,functions,path}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
+
+# Load find-the-fish
+source /usr/share/doc/find-the-command/ftc.zsh
+
+# Set Firefox to use Wayland if I'm running in it
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
