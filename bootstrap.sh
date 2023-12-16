@@ -54,6 +54,7 @@ function ohmyfish {
 		echo "Oh-my-fish not found.  Deploying."
 		ln -s "$CWD"/ohmyfish ~/.config/omf
 		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+		omf install bobthefish
 	fi
 }
 
