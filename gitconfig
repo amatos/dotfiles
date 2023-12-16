@@ -1,7 +1,7 @@
 [user]
 	name = Alberth Cruz Matos
 	email = alberth@matos.cc
-	signingkey=0xF41BDBF6171A3BB4
+	signingKey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
 
 [alias]
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -186,3 +186,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[tag]
+	forceSignAnnotated = true
