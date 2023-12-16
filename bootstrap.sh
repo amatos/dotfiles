@@ -2,9 +2,20 @@
 
 function ohmyzsh() {
 	echo "Checking for oh-my-zsh"
+	OMZSH_HOME="$HOME/.oh-my-zsh"
+	timestamp=$(date +%s-%N)
+	if [ ${FORCE_ZSH} = 1 ]; then
+		echo "ZSH installation forced."
+		if [ -e "${OMZSH_HOME}" ]; then
+			echo "Existing ${OMZSH_HOME} found."
+			echo "Existing ${OMZSH_HOME} moved to ${OMZSH_HOME}.${timestamp}"
+			mv "${OMZSH_HOME}" "${OMZSH_HOME}"."${timestamp}"
+		fi
+	fi
 	if [ ! -e /usr/bin/zsh ]; then
 		echo "Please install zsh"
-	elif [ ! -e ~/.oh-my-zsh ]; then
+	fi
+	if [ ! -e ~/.oh-my-zsh ] || [ ${FORCE_ZSH} = 1 ]; then
 		echo "Oh-my-zsh not found.  Deploying."
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 		rsync -ah --no-perms ./cobalt2/cobalt2.zsh-theme ~/.oh-my-zsh/themes/cobalt2.zsh-theme
@@ -15,12 +26,31 @@ function ohmyzsh() {
 function ohmyfish {
 	echo "Checking for oh-my-fish"
 	CWD=$(pwd)
-	if [ ! -e ~/.config/fish ]; then
-		ln -s "$CWD"/fish ~/.config/fish
+	FISH_HOME="$HOME/.config/fish"
+	OMFISH_HOME="$HOME/.local/share/omf"
+	timestamp=$(date +%s-%N)
+	if [ "${FORCE_FISH}" = 1 ]; then
+		echo "Fish installation forced."
+		if [ -e "${FISH_HOME}" ]; then
+			echo "Fish installation forced, but ${FISH_HOME} already exists."
+			echo "Existing ${FISH_HOME} moved to ${FISH_HOME}.${timestamp}"
+			mv "${FISH_HOME}" "${FISH_HOME}"."${timestamp}"
+			ln -s "$CWD"/fish "${FISH_HOME}"
+		fi
+		if [ -e ~/.local/share/omf ]; then
+			echo "Fish installation forced, but ${OMFISH_HOME} already exists."
+			echo "Existing ${FISH_HOME} moved to ${OMFISH_HOME}.${timestamp}"
+			mv "${OMFISH_HOME}" "${OMFISH_HOME}"."${timestamp}"
+		fi
+	fi
+	if [ ! -e "${FISH_HOME}" ]; then
+		echo "${FISH_HOME} not found, as expected.  Linking from $CWD/fish."
+		ln -s "$CWD"/fish "${FISH_HOME}"
 	fi
 	if [ ! -e /usr/bin/fish ]; then
 		echo "Please install fish"
-	elif [ ! -e ~/.local/share/omf ]; then
+	fi
+	if [ ! -e ~/.local/share/omf ]; then
 		echo "Oh-my-fish not found.  Deploying."
 		ln -s "$CWD"/ohmyfish ~/.config/omf
 		curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
@@ -94,6 +124,29 @@ function dotFiles() {
 	fi
 	source "$HOME"/.bash_profile;
 }
+
+FORCE_ZSH=0
+FORCE_FISH=0
+while getopts "hzf" flag;
+do
+	case "${flag}" in
+		h)
+			echo "Dotfiles destroyer ^H^H^H^H^H^H^H^H^H deployer"
+			echo "	-f to force fish dotfile deployment."
+			echo "	-z to force zsh dotfile deployment."
+			exit 0
+			;;
+		f)
+			FORCE_FISH=1
+			echo "Forcing fish"
+			;;
+		z)
+			FORCE_ZSH=1
+			echo "Forcing zsh"
+			;;
+		*)	;;
+	esac
+done
 
 updateRepo;
 ohmyzsh;
