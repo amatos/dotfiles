@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-if [ -f /usr/bin/subl ];
-then
+if [ -f /usr/bin/subl ]; then
     export EDITOR='subl -w';
+elif [ -e /usr/bin/kate ]; then
+    export EDITOR='kate -b';
+elif [ -e /usr/bin/nvim ]; then
+    export EDITOR='nvim';
 else
     export EDITOR='vi';
 fi
@@ -31,4 +34,5 @@ export MANPAGER='less -X';
 export GPG_TTY=$(tty);
 
 # Define my gpg key as KEYID
-export KEYID=0xF41BDBF6171A3BB4
+export KEYID=5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
+export SHORTKEYID=0xF41BDBF6171A3BB4

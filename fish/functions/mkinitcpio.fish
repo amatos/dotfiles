@@ -1,3 +1,3 @@
 function mkinitcpio
-sudo mkinitcpio $argv
+    sudo mkinitcpio $argv
 end
