@@ -92,7 +92,7 @@ function link() {
 	cd ~- || exit
 }
 
-function dotFiles() {
+function deployFiles() {
 	CWD=$(pwd)
 	echo "Deploy .files"
 	link aliases
@@ -156,9 +156,9 @@ done
 updateRepo;
 ohmyzsh;
 ohmyfish;
-dotFiles;
+deployFiles;
 
-unset dotFiles;
+unset deployFiles;
 unset ohmyfish;
 unset ohmyzsh;
 unset updateRepo;
