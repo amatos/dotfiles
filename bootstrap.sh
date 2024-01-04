@@ -114,6 +114,10 @@ function dotFiles() {
 	link wgetrc
 	link zshrc
 
+	if [ -e ~/.config/yay/config.json ]; then
+		rm ~/.config/yay/config.json
+		ln -s "$CWD"/yayconfig.json ~/.config/yay/config.json
+	fi
 	if [ ! -e ~/.config/nvim ];
 	then
 		ln -s "$CWD"/nvim ~/.config/nvim
