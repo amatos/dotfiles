@@ -36,3 +36,7 @@ export GPG_TTY=$(tty);
 # Define my gpg key as KEYID
 export KEYID=5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
 export SHORTKEYID=0xF41BDBF6171A3BB4
+
+# AUR credentials
+export AUR_USERNAME=`op item get "Archlinux AUR" --fields label=user`
+export AUR_PASSWORD=`op item get "Archlinux AUR" --fields label=user`
