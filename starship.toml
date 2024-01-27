@@ -1,3 +1,9 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
 format = """
 [░▒▓](#a3aed2)\
 [  ](bg:#a3aed2 fg:#090c0c)\
@@ -14,7 +20,12 @@ $php\
 [](fg:#212736 bg:#1d2230)\
 $time\
 [ ](fg:#1d2230)\
-\n$character"""
+\n$shell$character"""
+
+
+[cmd_duration]
+min_time = 500
+format = 'underwent [$duration](bold yellow)'
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
@@ -56,6 +67,15 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[shell]
+bash_indicator = '󱆃'
+fish_indicator = '󰈺'
+zsh_indicator = '󰬇'
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+style = 'cyan bold'
+disabled = false
 
 [time]
 disabled = true
