@@ -32,6 +32,7 @@ function deployFiles() {
 	link inputrc
 	link path
 	link screenrc
+	link starship.toml ~/.config/starship.toml
 	link tmux.conf
 	link vimrc
 	link vimrc ~/.config/nvim/init.vim
