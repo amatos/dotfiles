@@ -10,8 +10,9 @@ packages=(
 
 function check_package() {
 	# Run through the list of mandatory packages and install them.
-	for PACKAGE in ${packages[@]}; do
-		install_package $packages
+	for PACKAGE in "${packages[@]}"; do
+		echo "$PACKAGE"
+		install_package "$PACKAGE"
 	done
 }
 
@@ -39,8 +40,6 @@ function deployFiles() {
 	link wgetrc
 	link yayconfig.json ~/.config/yay/config.json
 	link zshrc
-
-	source "$HOME"/.bash_profile;
 }
 
 function install_package() {
@@ -96,13 +95,9 @@ function link() {
 	# Check if the optional ($2) parameter was provided.  If it was, create the symlink
 	# in the directory indicated.  Otherwise, create it as ~/.$1
 	if [ "${2}" ]; then
-		# Split the provided parameter into the base directory and ignore the file component
-		if [[ "${2}" =~ (/[^/]+/[^/]+)/(.*) ]]; then
-			basedir="${BASH_REMATCH[1]}"
-			# If basedir does NOT exist, create it
-			if [ ! -e "${basedir}" ]; then
-				mkdir -p "${basedir}"
-			fi
+		basedir=$(dirname "${2}")
+		if [ ! -e "${basedir}" ]; then
+			mkdir -p "${basedir}"
 		fi
 		ln -fs "${CWD}"/"${1}" "${2}"
 	else
@@ -177,7 +172,7 @@ function updateRepo() {
 # Main
 FORCE_ZSH=0
 FORCE_FISH=0
-while getopts "hzf" flag;
+while getopts "hzfp" flag;
 do
 	case "${flag}" in
 		h)
@@ -189,6 +184,11 @@ do
 		f)
 			FORCE_FISH=1
 			echo "Forcing fish"
+			;;
+		p)
+			echo "Checking packages"
+			check_package;
+			exit
 			;;
 		z)
 			FORCE_ZSH=1
