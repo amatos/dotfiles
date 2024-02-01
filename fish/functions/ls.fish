@@ -2,6 +2,6 @@ function ls
     if [ -e /usr/bin/lsd ]
         lsd $argv
     else
-        ls $argv
+        command ls $argv
     end
 end
