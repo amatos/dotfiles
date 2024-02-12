@@ -1,1 +1,0 @@
-/home/alberth/.dotfiles/vimrc
