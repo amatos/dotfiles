@@ -8,7 +8,7 @@ CursorShape=1
 
 [General]
 Command=/usr/bin/fish
-Name=Darkness
+Name=Lightness
 Parent=FALLBACK/
 TerminalCenter=true
 
@@ -17,7 +17,6 @@ AutoCopySelectedText=true
 MiddleClickPasteMode=1
 TrimLeadingSpacesInSelectedText=true
 TrimTrailingSpacesInSelectedText=true
-UnderlineFilesEnabled=true
 
 [Scrolling]
 HistoryMode=2
