@@ -10,6 +10,7 @@ CursorShape=1
 Command=/usr/bin/fish
 Name=Darkness
 Parent=FALLBACK/
+StartInCurrentSessionDir=false
 TerminalCenter=true
 
 [Interaction Options]
