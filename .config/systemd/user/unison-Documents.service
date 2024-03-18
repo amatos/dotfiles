@@ -1,0 +1,14 @@
+[Unit]
+Description=Unison Documents
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/unison Documents
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=default.target
+
+
