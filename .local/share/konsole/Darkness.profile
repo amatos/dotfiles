@@ -2,6 +2,7 @@
 ColorScheme=cobalt2
 Font=SFMono Nerd Font Mono,14,-1,5,50,0,0,0,0,0
 LineSpacing=1
+UseFontLineChararacters=false
 
 [Cursor Options]
 CursorShape=1
