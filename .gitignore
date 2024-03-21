@@ -33,6 +33,7 @@ ehthumbs.db
 /node_modules
 /vendor
 composer.lock
+/.config/systemd/user/default.target.wants/
 
 # Compiled Python files
 *.pyc
