@@ -1,0 +1,6 @@
+[Unit]
+Description=rclone File Synchronization
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rclone bisync "home:/Photo Collection/" "onedrive:/photos/" --create-empty-src-dirs --compare size,modtime,checksum --resilient --recover -MvP --fix-case

@@ -1,0 +1,164 @@
+# vim:set ft=gitconfig :
+
+[alias]
+
+  # Staging - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+  a  = add
+  aa = add --all
+
+  # Interactively stage parts of a file.
+  apa = add --patch
+
+  da   = diff
+  das  = diff --staged
+  daw  = diff          --word-diff # show diff by word
+  dasw = diff --staged --word-diff
+
+  d   = "!f() { git diff                      "$@" ':(exclude)package-lock.json' ':(exclude)*.lock'; }; f"
+  ds  = "!f() { git diff --staged             "$@" ':(exclude)package-lock.json' ':(exclude)*.lock'; }; f"
+  dw  = "!f() { git diff          --word-diff "$@" ':(exclude)package-lock.json' ':(exclude)*.lock'; }; f"
+  dsw = "!f() { git diff --staged --word-diff "$@" ':(exclude)package-lock.json' ':(exclude)*.lock'; }; f"
+
+  st  = status --short --branch
+  stu = status --short --branch -u
+  stl = status
+
+  # Committing - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  c    = commit
+  ce   = commit --amend
+  cen  = commit --amend --no-edit --no-verify
+  ca   = "!git add --all && git commit"
+  cae  = "!git add --all && git commit --amend"
+  caen = "!git add --all && git commit --amend --no-edit --no-verify"
+  cfu  = commit --fixup
+
+  rev = revert
+
+  # Working Dir & Index Manipulation - - - - - - - - - - - - - - - - - - - - - -
+
+  co = checkout
+
+  rt = reset
+  # rt <commit> -- [<path>] - undo <commit> but keep changes in working dir.
+
+  rts = reset --soft # undo commits and stage their changes
+
+  rs  = restore --worktree          # revert local changes
+  rst = restore            --staged # unstage things
+  rsa = restore --worktree --staged
+
+  rss  = restore --worktree          --source # specify a commit to revert to
+  rsts = restore            --staged --source
+  rsas = restore --worktree --staged --source
+
+  rmc = rm --cached # leave worktree copy alone
+
+  sta   = stash push
+  stam  = stash push                     --message
+  staa  = stash push --include-untracked
+  staam = stash push --include-untracked --message
+
+  stap = stash pop
+  stal = stash list
+  stas = stash show --text
+
+  cl   = clean -f # remove untracked & unignored files
+  cldr = clean --dry-run
+
+  # Branches - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  b  = branch
+  cb = checkout -b
+  cm = "!git checkout $(git_main_branch)"
+  cd = "!git checkout $(git_develop_branch)"
+
+  m   = merge
+  mtl = mergetool --no-prompt
+  ma  = merge --abort
+
+  cp  = cherry-pick
+  cpa = cherry-pick --abort
+  cpc = cherry-pick --continue
+  cpq = cherry-pick --quit
+
+  # Remotes - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  p    = push
+  pv   = push -v
+  pdr  = push    --dry-run
+  pf   = push    --force-with-lease --force-if-includes
+  pfv  = push -v --force-with-lease --force-if-includes
+  pff  = push    --force
+  pffv = push -v --force
+
+  f  = fetch
+  fa = fetch --all --prune
+
+  pl  = pull
+  plr = pull --rebase
+
+  sub  = submodule
+  subu = submodule update --init --recursive
+
+  # Logs - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  # Current branch.
+  l  = log --pretty=lc --graph
+  lo = log --pretty=lo --graph --date=human
+  ls = log --pretty=lo --graph --date=human --simplify-by-decoration
+  lf = log --pretty=lf --graph
+  ld = log --pretty=lf --graph --cc --stat
+  lp = log --pretty=lf --graph --cc        --patch
+
+  ls  = log -5 --pretty=lc --graph
+  los = log -5 --pretty=lo --graph --date=human
+  lss = log -5 --pretty=lo --graph --date=human --simplify-by-decoration
+  lfs = log -5 --pretty=lf --graph
+  lds = log -5 --pretty=lf --graph --cc --stat
+  lps = log -5 --pretty=lf --graph --cc        --patch
+
+  # All branches on all remotes.
+  la  = log --pretty=lc --graph --all
+  lao = log --pretty=lo --graph --all --date=human
+  las = log --pretty=lo --graph --all --date=human --simplify-by-decoration
+  laf = log --pretty=lf --graph --all
+  lad = log --pretty=lf --graph --all --cc --stat
+  lap = log --pretty=lf --graph --all --cc        --patch
+
+  las  = log -5 --pretty=lc --graph --all
+  laos = log -5 --pretty=lo --graph --all --date=human
+  lass = log -5 --pretty=lo --graph --all --date=human --simplify-by-decoration
+  lafs = log -5 --pretty=lf --graph --all
+  lads = log -5 --pretty=lf --graph --all --cc --stat
+  laps = log -5 --pretty=lf --graph --all --cc        --patch
+
+
+  # Shortcuts - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+  nevermind = "!git reset --hard HEAD && git clean -df"
+
+  open = "!fish -c git_open"
+
+  chash = "!git log --oneline | gum filter --height 10 | cut -d' ' -f1 | copyq copy - &>/dev/null"
+
+  # Notes - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+  # A note on reset, restore, and revert, paraphrased from `man git`, plus myown
+  # own on `rm`:
+  #
+  # revert - make a new commit that reverts a previous commit.
+  # restore - undo uncommitted changes in the working tree.
+  # reset - update the branch and change commit history.
+  # rm - same as system rm; remove files, either from git's knowledge, the
+  #   working directory, or both.
+  #
+  # These are not a description of the *possible* uses, rather a narrowing of
+  # the *intended* uses.
+ 
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+  # PATH VALUES:
+  # :/ - all files within the root of the working tree, so all files in the
+  #   repo, a la git add's --all option.

@@ -1,0 +1,25 @@
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+encryption = "gpg"
+progress = true
+
+[git]
+  autoPush = true
+  encryption = "gpg"
+
+[gpg]
+  recipient = "alberth@matos.cc"
+  args = ["--quiet"]
+
+[data]
+    gpgKey = "5FC8FE1141FA769594E91E48F41BDBF6171A3BB4"
+
+[merge]
+  command = "/usr/bin/meld"
+
+[diff]
+  pager = "diff-so-fancy"
+  command = "/usr/bin/meld"
