@@ -4,6 +4,7 @@ tags*
 **/*.src.ini
 **/.git
 
+./dot_config/private_1Password/settings.json
 .config/packages/arch*
 .config/pacman
 .config/yay
