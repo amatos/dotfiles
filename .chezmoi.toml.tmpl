@@ -1,8 +1,3 @@
-{{- $osid := .chezmoi.os -}}
-{{- if hasKey .chezmoi.osRelease "id" -}}
-{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
-{{- end -}}
-
 encryption = "gpg"
 progress = true
 
@@ -23,3 +18,10 @@ progress = true
 [diff]
   pager = "diff-so-fancy"
   command = "/usr/bin/meld"
+  args = ["--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
+  exclude = ["scripts", "externals"]
+
+[[textconv]]
+pattern = "**/*.plist"
+command = "plutil"
+args = ["-convert", "xml1", "-o", "-", "-"]
