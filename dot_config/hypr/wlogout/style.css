@@ -77,5 +77,5 @@ button:focus {
 }
 
 #hibernate:focus {
-  background-image: image(url("icons/hibernate.png"));
+  background-image: image(url("icons/hibernate-hover.png"));
 }
