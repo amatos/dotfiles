@@ -23,7 +23,7 @@ set -gx HACK "$HOME/hackin"
 
 # Editor.
 set -gx EDITOR nvim
-set -gx VISUAL "/usr/bin/kate -b "
+set -gx VISUAL "subl -w "
 set -gx SUDO_EDITOR "$EDITOR"
 
 # Use vi key bindings.
