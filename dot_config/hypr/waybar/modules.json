@@ -1,0 +1,260 @@
+{
+  "backlight": {
+    "interval": 30,
+    "align": 0,
+    "rotate": 0,
+    "tooltip-format": "{percent}",
+    "format": "<span font='20'>{icon}</span><span font='17'>{percent} </span>",
+    "format-icons": ["󰃞 ", "󰃝 ", "󰃟 ", "󰃠 "],
+    "on-scroll-up": "~/.config/hypr/scripts/brightness --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/brightness --dec",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "hyprland/submap": {
+    "format": "<span font='20'>󰘲</span><span font='17'>{} </span>",
+    "max-length": 30,
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "4": " ",
+      "5": " ",
+      // "1": " ",
+      // "2": " ",
+      // "3": " ",
+      // "5": "󱃶 ",
+      // "6": " ",
+      // "7": "󰊻 ",
+      // "8": " ",
+      // "9": " ",
+      "urgent": " ",
+      "active": " ",
+      "default": " "
+      //"default": " ",
+    },
+    "all-outputs": false,
+    "active-only": false,
+    //"show-special": true,
+    //"special-visible-only": true,
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+
+  "battery": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span font='20'>{icon}</span><span font='17'>{capacity} </span>",
+    "format-charging": "<span font='20'>󰂄</span><span font='17'>{capacity} </span>",
+    "format-plugged": "<span font='20'>󱐥</span><span font='17'>{capacity} </span>",
+    "format-full": "<span font='20'>{icon} </span>",
+    "format-alt": "<span font='20'>{icon}</span><span font='17'>{time} </span>",
+    "format-icons": ["󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "on-click-middle": "~/.config/hypr/scripts/swallowToggle"
+  },
+
+  "clock": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "format": "<span font='17'>{:%d %b</span><span font='20'>⁙</span><span font='17'>%H:%M %p}</span>",
+    "format-alt": "<span font='17'>{:%A⁙%d %B %Y⁙%I:%M %p}</span>",
+    "timezone": "America/New_York",
+    //"tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    // "on-click-right": "~/.config/hypr/scripts/changeHyprpaper"
+  },
+
+  "cpu": {
+    "interval": 5,
+    "format": "<span font='20'></span><span font='17'>{usage}% </span>",
+    "format-alt": "<span font='20'>{icon0}{icon1}{icon2}{icon3}</span><span font='17'>{usage:>2}% </span>",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+  },
+
+  "custom/menu": {
+    "format": "<span font='20'>󰍜</span>",
+    "tooltip": false,
+    "on-click": "$HOME/.config/hypr/scripts/menu"
+  },
+
+  "custom/power": {
+    "format": "<span font='20'>  </span>",
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell"
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "<span font='20'></span><span font='17'>{free} </span>",
+    "format-alt": "<span font='20'></span><span font='17'>{percentage_free}% </span>"
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": "<span font='20'></span><span font='17'>{used:0.1f}G </span>",
+    "format-alt": "<span font='20'></span><span font='17'>{}% </span>"
+  },
+
+  "network": {
+    "interval": 5,
+    "format-wifi": "<span font='20'>󰖩</span><span font='17'>{signalStrength}% </span>",
+    "format-ethernet": "<span font='20'>󰈀</span><span font='17'>{ipaddr}/{cidr} </span>",
+    "format-linked": "<span font='20'>󰈀</span><span font='17'>{ifname}(No IP) </span>",
+    "format-disconnected": "<span font='20'>󱚵</span><span font='17'>Disconnected </span>",
+    "format-disabled": "<span font='20'>󰖪</span><span font='17'>Disabled </span>",
+    "format-alt": "<span font='20'></span><span font='17'>{bandwidthUpBits} | <span font='20'></span>{bandwidthDownBits} </span>",
+    "tooltip-format": "<span font='20'></span><span font='17'>{ifname} {essid} via {gwaddr} </span>",
+    "on-click-middle": "~/.local/bin/mmuvpn up cbj",
+    "on-click-right": "kitty --class update -T update -1 -e nmtui"
+  },
+
+  "custom/weather": {
+    "tooltip": true,
+    "format": "{}",
+    "interval": 300,
+    "exec": "~/.config/hypr/scripts/wttr.py",
+    "return-type": "json"
+  },
+
+  "custom/updater": {
+    "format": "{} ",
+    "exec": "$HOME/.config/hypr/scripts/checkUpdate",
+    "exec-if": "[[ $($HOME/.config/hypr/scripts/checkUpdate) ]]",
+    "interval": 300,
+    "on-click": "kitty --class update -T update -e yay -Syu && notify-send -i '/usr/share/icons/hicolor/256x256/apps/kitty.png' 'Kitty Terminal' 'Nice!!!' "
+  },
+
+  "custom/uptime": {
+    "format": "<span font='20' ></span><span font='17'>{} </span>",
+    "exec": "$HOME/.config/hypr/scripts/upt",
+    "interval": 60
+  },
+
+  "custom/cycle_wall": {
+    "format": " ",
+    "on-click": "~/.config/hypr/scripts/changeHyprpaper",
+    "tooltip-format": "Change wallpaper"
+  },
+
+  "custom/vpn_check": {
+    "format": "<span font='20'>󱇲</span><span font='17'>{} </span>",
+    "exec": "~/.config/hypr/scripts/vpnCheck",
+    "interval": 120,
+    "on-click": "~/.local/bin/mmuvpn restart",
+    "on-click-right": "~/.local/bin/mmuvpn down"
+  },
+
+  "wireplumber": {
+    "format": "<span font='20'>{icon}</span><span font='17'>{volume} </span>",
+    "tooltip-format": "{volume}",
+    "format-muted": "<span font='20'>󰝟 </span>",
+    "format-bluetooth": "<span font='20'>󰂰 󰥰</span><span font='17'>{volume}{format_source} </span>",
+    "format-bluetooth-muted": "<span font='20'>󰂲</span><span font='17' color='@red'>Mute</span>",
+    "format-source": "<span font='20'>󰍬</span><span font='17'>{volume} </span>",
+    "format-source-muted": "<span font='20'>󰍭 </span>",
+    "format-icons": {
+      "headphone": "󰋎 ",
+      "hands-free": "",
+      "headset": "󰋎 ",
+      "phone": "󰏲 ",
+      "portable": "󰏲 ",
+      "car": " ",
+      "default": ["", " ", " "]
+    },
+    "scroll-step": 5.0,
+    "on-click": "pamixer -t",
+    "on-click-right": "kitty --class update -T update -e pulsemixer",
+    "on-click-middle": "pavucontrol",
+    "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume --dec",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "custom/cputemp": {
+    "format": "<span font='20'></span><span font='17'>{} </span>",
+    "exec": "~/.config/hypr/scripts/cputemp",
+    "interval": 15
+  },
+
+  "tray": {
+    "spacing": 10,
+    "icon-size": 20
+  },
+
+  "hyprland/window": {
+    "format": "<span font='20'>⁙</span><span font='17'>{}</span><span font='20'>⁙ </span>",
+    "separate-outputs": true
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "<span font='20' color='#f38ba8'> 󰛐 </span>",
+      "deactivated": "<span font='20' color='#cba6f7'> 󰛑 </span>"
+    }
+    /* "timeout": 30.5 */
+  },
+
+  "custom/waybar-mpris": {
+    // "format": "<span>⁙</span> {} <span>⁙</span>",
+    "return-type": "json",
+    "exec": "waybar-mpris --position --autofocus --order 'SYMBOL:POSITION' --separator string '⁙'",
+    "on-click": "waybar-mpris --send toggle",
+    // This option will switch between players on right click.
+    "on-click-right": "waybar-mpris --send player-next",
+    // The options below will switch the selected player on scroll
+    // "on-scroll-up": "waybar-mpris --send player-next",
+    // "on-scroll-down": "waybar-mpris --send player-prev",
+    // The options below will go to next/previous track on scroll
+    "on-scroll-up": "waybar-mpris --send next",
+    "on-scroll-down": "waybar-mpris --send prev",
+    "escape": true
+  },
+  "custom/hyprmixer": {
+    "mpris": {
+      "format": "{player_icon}",
+      "format-paused": "{status_icon}",
+      "player-icons": {
+        "default": "\uf28b",
+        "mpv": "🎵"
+      },
+      "status-icons": {
+        "paused": "\uf144"
+      },
+      "on-click": "hyprmixer",
+      "max-length": 1000,
+      "interval": 1
+    }
+  }
+}

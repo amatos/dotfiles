@@ -1,0 +1,81 @@
+@import "../themes/macchiato.css";
+
+window {
+  font-family: SF Pro Display;
+  font-size: 14pt;
+  color: @subtext0;
+  /* text */
+  background-color: @base;
+  /* background-color: #1e1e2e; */
+}
+
+button {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25%;
+  border: none;
+  background-color: @surface0;
+  margin: 5px;
+  color: @subtext0;
+  transition:
+    box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: @overlay2;
+  color: @crust;
+}
+
+button:focus {
+  background-color: @overlay0;
+  color: @yellow;
+}
+
+#lock {
+  background-image: image(url("icons/lock.png"));
+}
+
+#lock:focus {
+  background-image: image(url("icons/lock-hover.png"));
+}
+
+#logout {
+  background-image: image(url("icons/logout.png"));
+}
+
+#logout:focus {
+  background-image: image(url("icons/logout-hover.png"));
+}
+
+#suspend {
+  background-image: image(url("icons/sleep.png"));
+}
+
+#suspend:focus {
+  background-image: image(url("icons/sleep-hover.png"));
+}
+
+#shutdown {
+  background-image: image(url("icons/power.png"));
+}
+
+#shutdown:focus {
+  background-image: image(url("icons/power-hover.png"));
+}
+
+#reboot {
+  background-image: image(url("icons/restart.png"));
+}
+
+#reboot:focus {
+  background-image: image(url("icons/restart-hover.png"));
+}
+
+#hibernate {
+  background-image: image(url("icons/hibernate.png"));
+}
+
+#hibernate:focus {
+  background-image: image(url("icons/hibernate-hover.png"));
+}
