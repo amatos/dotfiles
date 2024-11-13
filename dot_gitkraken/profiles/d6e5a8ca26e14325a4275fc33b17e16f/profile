@@ -19,7 +19,8 @@
     ]
   },
   "editor": {
-    "fontFamily": "\"Liberation Mono\""
+    "fontFamily": "\"Liberation Mono\"",
+    "fontSize": "14"
   },
   "cli": {
     "fontFamily": "\"Liberation Mono\""

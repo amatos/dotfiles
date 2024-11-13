@@ -16,6 +16,7 @@
     "memory",
     "disk"
   ],
+
   "modules-center": ["hyprland/window", "clock", "custom/weather"],
   "modules-right": [
     "tray",
