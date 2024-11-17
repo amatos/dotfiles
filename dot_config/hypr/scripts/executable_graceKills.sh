@@ -48,7 +48,8 @@ close_applications
 
 case $1 in
 logout)
-  hyprctl dispatch exit
+  loginctl terminate-session "$XDG_SESSION_ID"
+  # hyprctl dispatch exit
   ;;
 reboot)
   systemctl reboot
