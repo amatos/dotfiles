@@ -4,29 +4,31 @@
   "exclusive": true,
   "passthrough": false,
   "position": "top",
-  "fixed-center": false,
-  "spacing": 3,
+  "fixed-center": true,
+  "spacing": 0,
   "gtk-layer-shell": true,
   "reload_style_on_change": true,
   "modules-left": [
+    "custom/arch",
     "hyprland/workspaces",
     "hyprland/submap",
     "cpu",
-    "custom/cputemp",
-    "memory",
-    "disk"
+    "temperature"
   ],
 
-  "modules-center": ["hyprland/window", "clock", "custom/weather"],
+  "modules-center": ["hyprland/window", "clock", "custom/weather", "gamemode"],
   "modules-right": [
+    "mpris",
+    "keyboard-state",
     "tray",
     "custom/hyprmixer",
     "idle_inhibitor",
-    "custom/uptime",
     "backlight",
     "wireplumber",
+    "bluetooth",
     "network",
     "battery",
+    "power-profiles-daemon",
     "custom/updater",
     "custom/power"
   ]

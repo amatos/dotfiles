@@ -1,27 +1,28 @@
 @import "macchiato.css";
 
 * {
-    font-family:
-        SFMono Nerd Font Mono,
-        Pragmasevka;
-    font-size: 14px;
-    border: none;
-    border-radius: 3px;
-    min-height: 11px;
-    margin: 0px;
+    font-family: "SFProDisplay Nerd Font", "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: large;
+
+/*    border: 0px;*/
+/*    border-radius: 3px;*/
+/*    min-height: 11px;*/
+/*    margin: 0px;*/
     /* margin: 1px; */
 }
 
 window#waybar {
     transition-property: background-color;
     transition-duration: 0.5s;
-    background: @mantle;
-    color: @text;
-    border-bottom: 3px solid @base;
-    /* border: 3px solid @overlay0; */
-    border-radius: 0px;
-    padding: 5px;
-    margin: 3px;
+/*    background: @base;*/
+    background: rgba(0,0,0,0);
+/*    color: @text;*/
+    border-bottom: 0px solid @surface0;
+/*    border: 0px solid @surface0; */
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: inset 0px -0px @crust;
+/*    padding: 0px;*/
+
 }
 
 window#waybar.hidden {
@@ -32,17 +33,12 @@ window#waybar.hidden {
     background: none;
 }
 
-/* .modules-left, .modules-center, .modules-right { */
-/*   background: @theme_base_color; */
-/*   border: 3px solid @overlay0; */
-/*   padding: 0px 5px; */
-/*   border-radius: 5; */
-/* } */
-
-/* .modules-center { */
-/* border: 3px solid @lavender; */
-/* margin: 0px 5px; */
-/* } */
+.modules-left, .modules-center, .modules-right {
+    border: 0px solid transparent;
+    padding: 0px 0px;
+    border-radius: 0px;
+    margin: 5px 9px 0px 9px;
+}
 
 #idle_inhibitor,
 #backlight,
@@ -68,8 +64,20 @@ window#waybar.hidden {
     padding: 0px 0px;
 }
 
+#tray {
+    border-radius: 13px;
+    border: 3px solid @overlay1;
+    padding: 0px 10px;
+    background-color: @surface0;
+/*    box-shadow: inset 0 0px @overlay1;    */
+}
 #idle_inhibitor {
     color: @subtext1;
+    border-radius: 13px;
+    border: 3px solid @subtext1;
+    padding: 0px 0px;
+    background-color: @surface0;
+
 }
 
 #backlight {
@@ -99,18 +107,35 @@ window#waybar.hidden {
 
 #clock {
     color: @rosewater;
+    border-radius: 13px;
+    border: 3px solid @rosewater;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #cpu {
     color: @flamingo;
+    border-radius: 13px;
+    border: 3px solid @flamingo;
+    padding: 0px 10px;
+    background-color: @surface0;
+
 }
 
 #memory {
     color: @sky;
+    border-radius: 13px;
+    border: 3px solid @sky;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #disk {
     color: @teal;
+    border-radius: 13px;
+    border: 3px solid @teal;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #tray > .passive {
@@ -122,92 +147,220 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    border-radius: 3px;
-    margin: 3px;
-    padding: 3px;
+    color: @subtext0;
+    background-color: @surface0;
 }
 
-#workspaces button:hover {
-    border-radius: 3px;
-    color: @overlay2;
+#workspaces button.empty {
+    color: @subtext0;
     background-color: @surface0;
 }
 
 #workspaces button.persistent {
     color: @surface2;
-    border-radius: 3px;
+    background-color: @surface0;
 }
 
 #workspaces button.active {
     color: @peach;
-    border-radius: 3px;
+    background-color: @surface0;
+    box-shadow: inset 0 -3px @peach;
+}
+
+#workspaces button:hover {
+    color: @subtext0;
+    background-color: @surface2;
+    box-shadow: inset 0 -3px @subtext0;
 }
 
 #workspaces button.urgent {
     color: @red;
-    border-radius: 3px;
+    background-color: @surface0;
+    box-shadow: inset 0 -3px red;
 }
 
-#workspaces button:not(.empty):not(.active) {
+#workspaces button:not(.active) {
     color: @mauve;
-    border-radius: 3px;
+    background-color: @surface0;
 }
 
 #custom-menu {
     color: @rosewater;
+    border-radius: 13px;
+    border: 3px solid @rosewater;
+    padding: 0px 10px;
+    background-color: @surface0;
+
 }
 
 #custom-power {
     color: @red;
-    margin-right: 3px;
+    border-radius: 13px;
+    border: 3px solid @red;
+    padding: 0px 10px 0px 10px;
+    background-color: @surface0;
 }
 
 #custom-updater {
     color: @maroon;
+    border-radius: 13px;
+    border: 3px solid @maroon;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #custom-uptime {
     color: @text;
+    border-radius: 13px;
+    border: 3px solid @text;
+    padding: 0px 10px;
+    background-color: @surface0;
+
 }
 
 #custom-weather {
     color: @lavender;
+    border-radius: 13px;
+    border: 3px solid @lavender;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #custom-vpn_check {
+    box-shadow: inset 0 0px @sky;
     color: @sky;
 }
 
-#custom-cputemp {
+#temperature {
     color: @teal;
+    border-radius: 13px;
+    border: 3px solid @teal;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
+
+#temperature.critical {
+    color: @crust;
+    border-radius: 13px;
+    border: 0px solid @text;
+    padding: 0px 10px;
+    background-color: @red;
+}
+
 
 #wireplumber {
     color: @sapphire;
+    border-radius: 13px;
+    border: 3px solid @sapphire;
+    padding: 0px 10px;
+    background-color: @surface0;
+
 }
 
 #wireplumber.bluetooth {
     color: @pink;
+    border-radius: 13px;
+    border: 3px solid @pink;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #wireplumber.muted {
     color: @red;
+    border-radius: 13px;
+    border: 3px solid @red;
+    padding: 0px 10px;
+    background-color: @surface0;
+
 }
 
 #window {
     color: @mauve;
+    border-radius: 13px;
+    border: 3px solid @mauve;
+    padding: 0px 10px;
+    background-color: @surface0;
+
+}
+
+/* make window module transparent when no windows present */
+window#waybar.empty #window {
+    background-color: transparent;
+    border: 0px solid @mauve;
 }
 
 #custom-waybar-mpris {
     color: @lavender;
+    box-shadow: inset 0 -3px @lavender;
 }
 
 #network {
     color: @teal;
+    border-radius: 13px;
+    border: 3px solid @teal;
+    padding: 0px 10px;
+    background-color: @surface0;
 }
 
 #network.disconnected,
 #network.disabled {
-    background-color: @surface0;
     color: @text;
+    border-radius: 13px;
+    border: 3px solid @text;
+    padding: 0px 10px;
+    background-color: @surface0;
+
+}
+
+#custom-arch {
+    color: @text;
+    border-radius: 13px;
+    border: 3px solid @text;
+    padding: 0px 10px 0px 10px;
+    background-color: @surface0;
+}
+
+#bluetooth {
+    color: @blue;
+    border-radius: 13px;
+    border: 3px solid @blue;
+    padding: 0px 10px;
+    background-color: @surface0;  
+}
+
+#power-profiles-daemon {
+    color: @green;
+    border-radius: 13px;
+    border: 3px solid @green;
+    padding: 0px 10px 0px 10px;
+    background-color: @surface0;  
+}
+
+#mpris {
+    color: @flamingo;
+    border-radius: 13px;
+    border: 3px solid @flamingo;
+    padding: 0px 10px;
+    background-color: @surface0;     
+}
+
+#gamemode {
+    color: @purple;
+    border-radius: 13px;
+    border: 3px solid @purple;
+    padding: 0px 10px;
+    background-color: @surface0;     
+}
+
+
+#keyboard-state {
+    color: darkgrey;
+    border-radius: 13px;
+    border: 3px solid darkgrey;
+    padding: 0px 3px;
+    background-color: @surface0;
+}
+
+#keyboard-state label.locked{
+    color: @white;
 }
