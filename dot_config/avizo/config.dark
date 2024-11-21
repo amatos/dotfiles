@@ -13,7 +13,7 @@ bar-fg-color = rgba(202, 211, 245, 1.0)
 bar-bg-color = rgba(0, 0, 0, 0.6)
 
 # The time to show the notification for.
-time = 5.0
+time = 3.14
 
 # The base directory to resolve relative image-path against (default is $XDG_DATA_HOME/avizo).
 ;image-base-dir =
