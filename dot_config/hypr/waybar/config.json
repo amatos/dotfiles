@@ -28,7 +28,6 @@
     "bluetooth",
     "network",
     "battery",
-    "power-profiles-daemon",
     "custom/updater",
     "custom/power"
   ]

@@ -50,6 +50,7 @@
             "class<kitty>": "",
             "class<sublime_text>": "",
             "class<GitKraken>": "",
+            "class<Spotify>": "",
         },
         "format-window-separator": " ",
         "ignore-workspaces": ["junks","hidden"]
@@ -360,8 +361,8 @@
         "scrolllock": true,
         "format": {
             "numlock": "N{icon}",
-            "capslock": "C",
-            "scrolllock": "S"
+            "capslock": "C{icon}",
+            "scrolllock": "S{icon}"
         },
         "format-icons": {
             "locked": "",
