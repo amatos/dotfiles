@@ -1,9 +1,0 @@
-#!/bin/bash
-
-UPDATE=$(checkupdates | wc -l)
-
-if [ ${UPDATE} -lt 1 ]; then
-  echo ""
-else
-  echo "󱑣 ${UPDATE}"
-fi
