@@ -1,3 +1,6 @@
+-- Load my custom settings
+require('alberth.settings')
+
 -- Run LazyVim package manager
 require('config.lazy')
 
@@ -37,6 +40,9 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
+
+-- Set color scheme
+vim.cmd.colorscheme('catppuccin-macchiato')
 
 -- NeoVide specific items
 if vim.g.neovide then
