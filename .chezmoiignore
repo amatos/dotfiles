@@ -7,6 +7,5 @@ tags*
 ./dot_config/private_1Password/settings.json
 .config/packages/arch*
 .config/pacman
-.config/yay
 .config/fish/conf.d/30-yay.fish
 .config/fish/functions/pkgsearch.fish
