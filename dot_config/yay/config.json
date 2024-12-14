@@ -1,4 +1,4 @@
-{
+{
   "aururl": "https://aur.archlinux.org",
   "aurrpcurl": "https://aur.archlinux.org/rpc?",
   "buildDir": "/home/alberth/.cache/yay",
