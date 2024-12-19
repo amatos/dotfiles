@@ -1,4 +1,0 @@
-{
-  "\\.(avi|mp4|mkv|mov|wav)$": "mpv",
-  "\\.(doc|docx|xls|xlsx)$": "libreoffice"
-}
