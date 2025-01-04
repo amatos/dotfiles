@@ -54,7 +54,8 @@ abbr -a mv --position command "mv -iv"
 #                                  │└─ list moved files
 #                                  └─ prompt before overwriting an existing file
 
-abbr -a rm --position command "trash -rf"
+abbr -a rm --position command "trash"
+#abbr -a rm --position command "trash -rf"
 #                                  │└─ do not ask for confirmation
 #                                  └─ recursively remove directories and files
 
