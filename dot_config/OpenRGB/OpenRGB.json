@@ -1282,10 +1282,10 @@
             "set_on_exit": true
         },
         "geometry": {
-            "height": 908,
+            "height": 1036,
             "load_geometry": true,
             "save_on_exit": true,
-            "width": 1481,
+            "width": 1900,
             "x": 0,
             "y": 0
         },

@@ -14,9 +14,13 @@ add_newline = false
 # $character
 # """
 format = """
-$cmd_duration$directory $git_branch
-$character
-"""
+╭─$character─$username $directory\
+$git_branch\
+$git_state\
+$git_status\
+$package\
+$python\
+\n╰─λ """
 
 [palettes.catppuccin_frappe]
 rosewater = "#f2d5cf"

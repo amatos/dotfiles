@@ -12,8 +12,8 @@
   "buffer_font_family": "SFMono Nerd Font Mono",
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Macchiato"
+    "light": "Catppuccin Macchiato",
+    "dark": "Catppuccin Mocha"
   },
   "tabs": {
     // Show git status colors in the editor tabs.
@@ -25,5 +25,10 @@
   },
   "terminal": {
     "copy_on_select": true
+  },
+  "languages": {
+    "JSON": {
+      "format_on_save": "off"
+    }
   }
 }

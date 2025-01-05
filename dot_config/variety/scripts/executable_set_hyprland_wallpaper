@@ -67,10 +67,10 @@ else
         swaybg -i "$WP" -m fit
     fi
 fi
-# magick "$3" -colorspace Gray $HOME/Pictures/background.png
-magick "$3" -filter Gaussian -resize 10% -define filter:sigma=8 -resize 1000% $HOME/Pictures/background.png
-# magick "$3" /usr/local/backgrounds/greetd.jpg
-magick "$3" -filter Gaussian -resize 10% -define filter:sigma=8 -resize 1000% /usr/local/backgrounds/greetd.jpg
+magick "$3" $HOME/Pictures/background.png
+# magick "$3" -filter Gaussian -resize 10% -define filter:sigma=8 -resize 1000% $HOME/Pictures/background.png
+magick "$3" /usr/local/backgrounds/greetd.jpg
+# magick "$3" -filter Gaussian -resize 10% -define filter:sigma=8 -resize 1000% /usr/local/backgrounds/greetd.jpg
 
 # =====================================================================================
 
