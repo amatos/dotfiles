@@ -1,0 +1,15 @@
+[Added Associations]
+application/json=dev.zed.Zed.desktop;sublime_text.desktop;GitKraken.desktop;vim.desktop;gvim.desktop;nvim.desktop;okularApplication_txt.desktop;firefox.desktop;libreoffice-writer.desktop;
+application/pdf=okularApplication_pdf.desktop;firefox.desktop;libreoffice-draw.desktop;
+image/png=org.kde.gwenview.desktop;okularApplication_kimgio.desktop;firefox.desktop;
+inode/directory=org.kde.dolphin.desktop;
+
+[Default Applications]
+application/json=dev.zed.Zed.desktop;
+application/pdf=okularApplication_pdf.desktop;
+image/png=org.kde.gwenview.desktop;
+inode/directory=org.kde.dolphin.desktop;
+x-scheme-handler/gitkraken=GitKraken.desktop
+
+[Removed Associations]
+inode/directory=kitty-open.desktop;
