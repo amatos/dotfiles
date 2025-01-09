@@ -4,7 +4,6 @@ function vim
     else if [ -e /usr/bin/vim ]
         command vim $argv
     else
-        command vi $argv
+        vi $argv
     end
 end
-
