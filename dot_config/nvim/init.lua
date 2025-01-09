@@ -42,7 +42,10 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 5
 
 -- Set color scheme
-vim.cmd.colorscheme('catppuccin-macchiato')
+--vim.cmd.colorscheme('catppuccin-macchiato')
+vim.opt.termguicolors = true
+local pywal = require('pywal')
+pywal.setup()
 
 -- NeoVide specific items
 if vim.g.neovide then

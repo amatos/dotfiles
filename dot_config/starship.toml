@@ -44,8 +44,9 @@ $cmd_duration\
 """
 
 [character] # The name of the module we are configuring is "character"
-success_symbol = "[](bold fg:green bg:black)[• ](bg:green fg:black)[](fg:green bg:black)"
-error_symbol = "[](bold fg:red bg:black)[• 󰅙](bg:red fg:red)[](fg:red bg:black)"
+success_symbol = "[](bold fg:green bg:black)[• ➜](bg:green fg:black)[](fg:green bg:black)"
+error_symbol = "[](bold fg:red bg:black)[• ✗](bg:red fg:red)[](fg:red bg:black)"
+format = '$symbol'
 
 # Disable the package module, hiding it from the prompt completely
 [package]
