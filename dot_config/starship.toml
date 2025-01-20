@@ -44,8 +44,8 @@ $cmd_duration\
 """
 
 [character] # The name of the module we are configuring is "character"
-success_symbol = "[](bold fg:green bg:black)[• ➜](bg:green fg:black)[](fg:green bg:black)"
-error_symbol = "[](bold fg:red bg:black)[• ✗](bg:red fg:red)[](fg:red bg:black)"
+success_symbol = "[](bold fg:green)[• ➜](bg:green fg:black)[](fg:green)"
+error_symbol = "[](bold fg:red)[• ✗](bg:red fg:black)[](fg:red)"
 format = '$symbol'
 
 # Disable the package module, hiding it from the prompt completely
@@ -99,7 +99,7 @@ disabled = false
 
 [shell]
 disabled = false
-format = '[─](fg:separator)[](bold fg:blue bg:black)[$indicator](bg:blue fg:black)[](bold fg:blue bg:black)'
+format = '[─](fg:separator)[](bold fg:blue)[$indicator](fg:black bg:blue)[](bold fg:blue)'
 bash_indicator = "󱆃"
 fish_indicator = "󰈺"
 zsh_indicator = "z"
@@ -154,7 +154,7 @@ min_time = 0
 format = '[─](fg:separator)[](bold fg:yellow)[ $duration](bold bg:yellow fg:black)[](bold fg:yellow) •• '
 
 [os]
-format = "[─](fg:separator)[](bold fg:green)[$symbol]($style)[](bold fg:green)"
+format = "[─](fg:separator)[](bold fg:green)[$symbol](bg:green fg:black)[](bold fg:green)"
 style = "bold blue"
 disabled = false
 
@@ -164,7 +164,7 @@ Alpine = " "
 AlmaLinux = " "
 Amazon = " "
 Android = " "
-Arch = " "
+Arch = ""
 Artix = " "
 CentOS = " "
 Debian = " "
