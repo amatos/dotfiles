@@ -13,7 +13,7 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Macchiato",
-    "dark": "Catppuccin Mocha"
+    "dark": "Catppuccin Macchiato"
   },
   "tabs": {
     // Show git status colors in the editor tabs.
