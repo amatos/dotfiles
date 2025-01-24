@@ -73,7 +73,7 @@ magick "$3" /usr/local/backgrounds/greetd.jpg
 # magick "$3" -filter Gaussian -resize 10% -define filter:sigma=8 -resize 1000% /usr/local/backgrounds/greetd.jpg
 
 # run Apply pywal script
-~/.local/bin/apply-pywal.sh "$3"
+#~/.local/bin/apply-pywal.sh "$3"
 
 # =====================================================================================
 
