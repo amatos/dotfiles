@@ -13,7 +13,7 @@ wal -c
 # Generate a new color scheme
 wal -i "$IMAGE" $LIGHT
 # Apply the color scheme
-swaync-client --reload-css
-cat ~/.cache/wal/colors-kitty.conf > ~/.config/kitty/current-theme.conf
-pywalfox update
-pywal_sublime.sh
+# swaync-client --reload-css
+# cat ~/.cache/wal/colors-kitty.conf > ~/.config/kitty/current-theme.conf
+# pywalfox update
+# pywal_sublime.sh
