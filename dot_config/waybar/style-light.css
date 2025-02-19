@@ -1,8 +1,9 @@
-@import "latte.css";
+@import "frappe.css";
 
 * {
-    font-family: "SFMono Nerd Font Mono", "JetBrainsMono Nerd Font", Roboto,
-        Helvetica, Arial, sans-serif;
+    font-family:
+        "SFMono Nerd Font Mono", "JetBrainsMono Nerd Font", Roboto, Helvetica,
+        Arial, sans-serif;
     font-size: medium;
     /*    border: 0px;*/
     /*    border-radius: 3px;*/

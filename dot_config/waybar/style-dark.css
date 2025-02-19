@@ -1,8 +1,9 @@
-@import "macchiato.css";
+@import "mocha.css";
 
 * {
-    font-family: "SFMono Nerd Font Mono", "JetBrainsMono Nerd Font", Roboto,
-        Helvetica, Arial, sans-serif;
+    font-family:
+        "SFMono Nerd Font Mono", "JetBrainsMono Nerd Font", Roboto, Helvetica,
+        Arial, sans-serif;
     font-size: medium;
     /*    border: 0px;*/
     /*    border-radius: 3px;*/
