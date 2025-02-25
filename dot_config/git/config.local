@@ -1,6 +1,0 @@
-# vim:set ft=gitconfig :
-
-[user]
-  name = Alberth Matos
-  email = alberth@matos.cc
-  signingkey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
