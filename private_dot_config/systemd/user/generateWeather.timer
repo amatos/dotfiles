@@ -1,0 +1,9 @@
+[Unit]
+Description=Generate weather data
+
+[Timer]
+OnBootSec=10m
+OnUnitActiveSec=15m
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=Generate weather data in ~/.cache/.weather_cache
+
+[Service]
+Type=oneshot
+ExecStart=/home/alberth/.local/bin/Weather.py

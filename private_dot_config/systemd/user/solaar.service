@@ -1,0 +1,14 @@
+[Unit]
+Description=Solaar headless
+After=network.target
+Requires=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/solaar -w hide --restart-on-wake-up
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
