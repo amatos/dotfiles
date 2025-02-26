@@ -7,4 +7,4 @@
 # Since Plasma 5.26 the lookandfeeltool does not work anymore without "faking" the screen.
 # Reference: https://bugs.kde.org/show_bug.cgi?id=460643
 
-# lookandfeeltool -platform offscreen --apply "Scratchy"
+lookandfeeltool -platform offscreen --apply "org.kde.breezedark.desktop"
