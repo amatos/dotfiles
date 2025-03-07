@@ -1,0 +1,137 @@
+#!/usr/bin/env fish
+
+set -l msg_file $argv[1]
+set -l commit_type $(string trim $argv[2])
+set -l commit_sha $(string trim $argv[3])
+
+# Rebasing || cherry-picking.
+if test "$commit_type" = messageg || test "$commit_type" = message
+    exit 0
+end
+
+if test -n "$commit_sha"
+    gum confirm "Create a new commit message?" || exit 0
+end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+set -l gitmojis $(curl -s https://gitmoji.dev/api/gitmojis | jello -rl '\
+result = []
+for entry in _.gitmojis:
+    item = entry.emoji + " - " + entry.description
+
+    if entry.semver is not None:
+        item += " \033[91;3m(" + entry.semver + ")\033[0m"
+
+    result.append(item)
+
+result
+')
+
+set -l types \
+    "build: Changes that affect the build system or external dependencies" \
+    "ci: Changes to the CI configuration files and scripts" \
+    "docs: Documentation only changes" \
+    "feat: A new feature" \
+    "fix: A bug fix" \
+    "perf: A code change that improves performance" \
+    "refactor: A code change that neither fixes a bug nor adds a feature" \
+    "style: Changes that do not affect the meaning of the code" \
+    "test: Adding missing tests or correcting existing tests" \
+    "chore: Update dependencies; bump version numbers; etc"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+# HAS to be global so the function has access to it.
+set -g gitmoji "$(gum filter --height=10 $gitmojis)"
+
+# Abort if no emoji was selected
+if ! test -n "$gitmoji"
+    exit 1
+end
+
+set -l emoji $(string sub --length 1 $gitmoji)
+
+function breaking
+    string match -rq '\(major\)' "$gitmoji"
+end
+
+# function minor
+#     string match -rq '\(minor\)' "$gitmoji"
+# end
+#
+# function patch
+#     string match -r '\(patch\)' "$gitmoji"
+# end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+set -l type $(gum filter --height=10 $types)
+set type $(string match --regex '^[a-z]+' $type)
+
+set -l scope $(gum input --placeholder "scope")
+
+test -n "$scope" && set scope "($scope)"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+set -l summary "$type$scope: "
+breaking && set summary "$type$scope!: "
+set summary $(gum input --value "$summary" --placeholder "Summary of this change")
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+set -l footer ""
+breaking && set footer $(gum input --value "BREAKING CHANGE: " --placeholder "The breaking change being introduced")
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+# if breaking && test "$(git_current_branch)" = "$(git_main_branch)"
+#     set -l msg "You are commiting a breaking change on to the main branch. Continue commit?\n(Selecting no will save your commit message to the clipboard)"
+#
+#     gum confirm $msg || begin
+#         copyq copy "$emoji $summary\n$description$footer"
+#         exit
+#     end
+# end
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+set -l msg "$(cat $msg_file)"
+
+set -l new_msg "$emoji $summary\n\n"
+
+if test ! -z "$footer"
+    set new_msg "$new_msg$footer\n\n"
+end
+
+set new_msg "$new_msg$msg"
+
+echo -e "$new_msg" >"$msg_file"
+
+# function tag
+#     if breaking || minor || patch
+#         if test "$(git_current_branch)" = "$(git_main_branch)"
+#             gum confirm "Bump version number and tag commit?" || return
+#
+#             set -f last $(git describe --tags --abbrev=0 || 'v0.0.0')
+#             set last $(string replace v '' $last | string split .)
+#
+#             set -f i 0
+#             if breaking
+#                 set i 1
+#             else if minor
+#                 set i 2
+#             else if patch
+#                 set i 3
+#             end
+#
+#             if test $i -gt 0
+#                 set last[$i] $(math $last[$i] + 1)
+#             end
+#
+#             set -f new "$last[1].$last[2].$last[3]"
+#             git tag -a "v$new" -m "Version $new"
+#         end
+#     end
+# end
