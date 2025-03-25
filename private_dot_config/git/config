@@ -21,15 +21,15 @@
     untrackedCache = true
 
     # Use delta.
-    pager = delta
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [user]
     # Do not guess the user's identity.
     useConfigOnly = true
 
-    name = Alberth Matos
-    email = alberth@matos.cc
-    signingkey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
+	name = Alberth Matos
+	email = alberth@matos.cc
+	signingKey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
 
 [include]
     path = ~/.config/git/config.delta-themes
@@ -63,7 +63,7 @@
     defaultBranch = main
 
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = diff-so-fancy --patch
 
 [status]
     showstash = true
@@ -128,3 +128,10 @@
 
 [credential "https://gist.github.com"]
     helper = !/usr/bin/gh auth git-credential
+
+[diff-so-fancy]
+	markEmptyLines = false
+
+[sendemail]
+	sendmailCmd = /usr/bin/msmtp --account= --from='alberth <alberth@matos.cc>'
+	confirm = always
