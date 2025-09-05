@@ -125,10 +125,10 @@
     insteadOf = aur://
 
 [credential "https://github.com"]
-    helper = !/usr/bin/gh auth git-credential
+    helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://gist.github.com"]
-    helper = !/usr/bin/gh auth git-credential
+    helper = !/opt/homebrew/bin/gh auth git-credential
 
 [diff-so-fancy]
 	markEmptyLines = false
