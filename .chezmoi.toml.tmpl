@@ -13,11 +13,11 @@ progress = true
     gpgKey = "5FC8FE1141FA769594E91E48F41BDBF6171A3BB4"
 
 [merge]
-  command = "/usr/bin/meld"
+  command = "/opt/homebrew/bin/ksdiff"
 
 [diff]
   pager = "diff-so-fancy"
-  command = "/usr/bin/meld"
+  command = "/opt/homebrew/bin/ksdiff"
   args = ["--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
   exclude = ["scripts", "externals"]
 
