@@ -14,11 +14,12 @@ progress = true
 
 [merge]
   command = "/opt/homebrew/bin/ksdiff"
+  args = ["--merge", "--output", "{{ "{{ .Target }}" }}", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}"]
 
 [diff]
   pager = "diff-so-fancy"
   command = "/opt/homebrew/bin/ksdiff"
-  args = ["--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
+  args = ["--wait", "--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
   exclude = ["scripts", "externals"]
 
 [[textconv]]
