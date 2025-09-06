@@ -19,14 +19,15 @@ else
     set -gx EDITOR vim
 end
 
-# If BBEdit is installed, use BBEdit, otherwise
-# If zed is installed, set zed as my visual editor,
-if test \( -e /opt/homebrew/bin/bbedit \)
-  set -gx VISUAL "/opt/homebrew/bin/bbedit --wait"
-else if [ -e "/opt/homebrew/bin/zed -w" ]
+# If zed is installed, set zed as my visual editor, otherwise
+# If BBEdit is installed, use BBEdit
+
+if [ -e "/opt/homebrew/bin/zed -w" ]
     set -gx VISUAL "/opt/homebrew/bin/zed -w "
 else if [ -e "/usr/bin/zed -w" ]
     set -gx VISUAL "/usr/bin/zed -w "
+else if [ -e /opt/homebrew/bin/bbedit ]
+    set -gx VISUAL "/opt/homebrew/bin/bbedit --wait "
 end
 
 set -gx SUDO_EDITOR "$EDITOR"
