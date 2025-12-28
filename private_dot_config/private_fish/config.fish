@@ -9,3 +9,5 @@ if status is-interactive
     atuin init --disable-up-arrow fish | source
     fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
 end
+
+fish_config theme choose "Dracula Official"
