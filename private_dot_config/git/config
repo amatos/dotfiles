@@ -27,15 +27,18 @@
     # Do not guess the user's identity.
     useConfigOnly = true
 
-	name = Alberth Matos
-	email = alberth@matos.cc
-	signingKey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
+    name = Alberth Matos
+    email = alberth@matos.cc
+    signingKey = 5FC8FE1141FA769594E91E48F41BDBF6171A3BB4
 
 [include]
     path = ~/.config/git/config.delta-themes
 
 [include]
     path = ~/.config/git/config.local
+
+[include]
+    path = ~/.config/git/dracula.theme
 
 [delta]
     navigate = true
