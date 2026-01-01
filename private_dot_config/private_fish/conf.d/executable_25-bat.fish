@@ -11,6 +11,15 @@ if test \( -e /usr/bin/bat \) -o \( -e /opt/homebrew/bin/bat \)
     function cat --wraps bat
         bat --paging=never --style plain $argv
     end
-    abbr -a --position anywhere -- --help '--help | bat -plhelp'
-    abbr -a --position anywhere -- -h '-h | bat -plhelp'
+
+    # Use bat as a replacement for `less'
+    function less --wraps bat
+        bat --paging=always --style plain $argv
+    end
+
+    # Use bat as a replacement for `man'
+    function man --wraps bat
+        bat --paging=always --style plain $argv
+    end
+
 end

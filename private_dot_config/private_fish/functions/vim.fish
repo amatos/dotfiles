@@ -1,4 +1,4 @@
-function vi
+function vim
     if [ -e /usr/bin/nvim ]
         nvim $argv
     else if [ -e /opt/homebrew/bin/nvim ]
