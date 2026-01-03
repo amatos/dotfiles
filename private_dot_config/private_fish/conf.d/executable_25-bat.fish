@@ -17,9 +17,4 @@ if test \( -e /usr/bin/bat \) -o \( -e /opt/homebrew/bin/bat \)
         bat --paging=always --style plain $argv
     end
 
-    # Use bat as a replacement for `man'
-    function man --wraps bat
-        bat --paging=always --style plain $argv
-    end
-
 end
