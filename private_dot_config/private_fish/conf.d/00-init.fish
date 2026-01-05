@@ -22,9 +22,9 @@ end
 # If zed is installed, set zed as my visual editor, otherwise
 # If BBEdit is installed, use BBEdit
 
-if test \( -e "/opt/homebrew/bin/zed -w" \)
+if test \( -e /opt/homebrew/bin/zed \)
     set -gx VISUAL "/opt/homebrew/bin/zed -w "
-else if test \( -e "/usr/bin/zed -w" \)
+else if test \( -e /usr/bin/zed \)
     set -gx VISUAL "/usr/bin/zed -w "
 else if test \( -e /opt/homebrew/bin/bbedit \)
     set -gx VISUAL "/opt/homebrew/bin/bbedit --wait "
