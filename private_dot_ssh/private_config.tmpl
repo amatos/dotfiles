@@ -1,12 +1,16 @@
 include 1Password/config
 
 Host *
+{{- if eq .chezmoi.os "darwin" }}
     # 1Password agent
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    # Forward ssh agent to the remote machine.
-    ForwardAgent yes
     # Allow MacOS to use the keychain for SSH key passphrases
     UseKeychain yes
+{{- else if eq .chezmoi.os "linux" }}
+    IdentityAgent ~/.1password/agent.sock
+{{- end }}
+    # Forward ssh agent to the remote machine.
+    ForwardAgent yes
     AddKeysToAgent yes
     SetEnv TERM=xterm-256color
 
