@@ -3,7 +3,7 @@ include 1Password/config
 Host *
 {{- if eq .chezmoi.os "darwin" }}
     # 1Password agent
-	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     # Allow MacOS to use the keychain for SSH key passphrases
     UseKeychain yes
 {{- else if eq .chezmoi.os "linux" }}
@@ -18,4 +18,4 @@ Host muninn.home.matos.cc muninn
     User pi
 
 Host github.com
-	User git
+    User git
