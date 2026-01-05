@@ -1,0 +1,17 @@
+include 1Password/config
+
+Host *
+    # 1Password agent
+	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    # Forward ssh agent to the remote machine.
+    ForwardAgent yes
+    # Allow MacOS to use the keychain for SSH key passphrases
+    UseKeychain yes
+    AddKeysToAgent yes
+    SetEnv TERM=xterm-256color
+
+Host muninn.home.matos.cc muninn
+    User pi
+
+Host github.com
+	User git
