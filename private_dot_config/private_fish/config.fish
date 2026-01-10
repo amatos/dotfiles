@@ -7,6 +7,7 @@ if status is-interactive
     atuin init --disable-up-arrow fish | source
     fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
     starship init fish | source
+    jenv init - | source
 end
 
 fish_config theme choose "Dracula Official"
