@@ -4,10 +4,10 @@ end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    atuin init --disable-up-arrow fish | source
-    fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc
-    starship init fish | source
-    jenv init - | source
+    atuin init --disable-up-arrow fish | source # Initialize atuin
+    fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc # Display fastfetch
+    starship init fish | source # Initialize starship
+    jenv init - | source # Initialize jenv
 end
 
 fish_config theme choose "Dracula Official"
