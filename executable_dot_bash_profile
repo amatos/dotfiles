@@ -6,6 +6,7 @@
 # This sets the environment for interactive shells.
 # This file is opened automatically by macOS by default when Bash is used.
 
+
 # This PATH should also be in ~/.zshenv
 PATH=/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/sbin
    # Note colons separate items in $PATH.
