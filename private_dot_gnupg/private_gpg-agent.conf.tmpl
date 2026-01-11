@@ -12,13 +12,13 @@ max-cache-ttl 120
 # Apple silicon (default /opt/homebrew/bin/pinentry)
 # pinentry-program /opt/homebrew/bin/pinentry
 # pinentry-program /opt/homebrew/bin/pinentry-curses
-pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+pinentry-program pinentry-program /opt/homebrew/bin/pinentry-mac
 # pinentry-program /opt/homebrew/bin/pinentry-tty
 {{ else if eq .chezmoi.arch "amd64" }}
 # Intel silicon (default /usr/local/bin/pinentry)
 # pinentry-program /usr/local/bin/pinentry
 # pinentry-program /usr/local/bin/pinentry-curses
-pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
+pinentry-program pinentry-program /opt/homebrew/bin/pinentry-mac
 # pinentry-program /usr/local/bin/pinentry-tty
 {{ end }}
 {{ else if eq .chezmoi.os "linux" }}
