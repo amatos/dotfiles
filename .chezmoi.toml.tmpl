@@ -1,28 +1,34 @@
 encryption = "gpg"
 progress = true
 
+[data]
+    git_name = "{{ onepasswordRead "op://Private/Personal/Identification/first name" }} {{ onepasswordRead "op://Private/Personal/Identification/last name" }}"
+    git_email = "{{ onepasswordRead "op://Private/Personal/Internet Details/email" }}"
+    gpg_email = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/email" }}"
+    gpg_key = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/Fingerprint" }}"
+    gpg_shortkey = "{{ onepasswordRead "op://Private/Personal/Identification/GPG Key" }}"
+
 [git]
-  autoPush = true
-  encryption = "gpg"
+    autoPush = true
+    encryption = "gpg"
 
 [gpg]
-  recipient = "alberth@matos.cc"
-  args = ["--quiet"]
+    recipient = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/email" }}"
+    args = ["--quiet"]
 
-[data]
-    gpgKey = "5FC8FE1141FA769594E91E48F41BDBF6171A3BB4"
+
 
 [merge]
-  command = "/opt/homebrew/bin/ksdiff"
-  args = ["--merge", "--output", "{{ "{{ .Target }}" }}", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}"]
+    command = "/opt/homebrew/bin/ksdiff"
+    args = ["--merge", "--output", "{{ "{{ .Target }}" }}", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}"]
 
 [diff]
-  pager = "diff-so-fancy"
-  command = "/opt/homebrew/bin/ksdiff"
-  args = ["--wait", "--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
-  exclude = ["scripts", "externals"]
+    pager = "diff-so-fancy"
+    command = "/opt/homebrew/bin/ksdiff"
+    args = ["--wait", "--diff", "{{ "{{ .Destination }}" }}", "{{ "{{ .Target }}" }}"]
+    exclude = ["scripts", "externals"]
 
 [[textconv]]
-pattern = "**/*.plist"
-command = "plutil"
-args = ["-convert", "xml1", "-o", "-", "-"]
+    pattern = "**/*.plist"
+    command = "plutil"
+    args = ["-convert", "xml1", "-o", "-", "-"]
