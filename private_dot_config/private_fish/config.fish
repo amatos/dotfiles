@@ -3,10 +3,6 @@ install_fisher
 
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
-# Colorize manpages using bat
-set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
-set -q MANROFFOPT; or set -Ux MANROFFOPT -c
-
 # fifc
 set -gx fifc_exa_opts --all --color=always --icons
 
