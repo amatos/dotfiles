@@ -16,8 +16,6 @@ progress = true
     recipient = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/email" }}"
     args = ["--quiet"]
 
-
-
 [merge]
     command = "/opt/homebrew/bin/ksdiff"
     args = ["--merge", "--output", "{{ "{{ .Target }}" }}", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}"]
