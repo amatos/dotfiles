@@ -4,9 +4,9 @@
 if test \( -e /usr/bin/bat \) -o \( -e /opt/homebrew/bin/bat \)
     # Use deltas for bat --diff
     set -gx BATDIFF_USE_DELTA true
-    # Use bat as man pager
-    set -gx MANPAGER "sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
-
+    # Colorize manpages using bat
+    set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
+    set -q MANROFFOPT; or set -Ux MANROFFOPT -c
     # Use bat as a replacement for `cat'
     function cat --wraps bat
         bat --paging=never --style plain $argv
