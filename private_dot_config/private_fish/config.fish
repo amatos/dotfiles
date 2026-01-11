@@ -3,10 +3,6 @@ install_fisher
 
 set -q fisher_path; or set -Ux fisher_path "$HOME/.config/fish"
 
-# Standalone env vars
-set -gx EDITOR nvim
-set -gx CARGO_INSTALL_ROOT ~/.cargo
-
 # Colorize manpages using bat
 set -q MANPAGER; or set -Ux MANPAGER 'sh -c "col -bx | bat --language=man --style=grid --color=always --decorations=always"'
 set -q MANROFFOPT; or set -Ux MANROFFOPT -c
@@ -90,7 +86,6 @@ if status is-interactive
     starship init fish | source # Initialize starship
     jenv init - | source # Initialize jenv
     set -gx BAT_STYLE auto
-    set -gx VISUAL=/opt/homebrew/bin/zed -w
 else
     set -gx BAT_STYLE plain
 end
