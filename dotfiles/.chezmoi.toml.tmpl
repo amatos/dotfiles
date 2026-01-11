@@ -7,7 +7,13 @@ progress = true
     gpg_email = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/email" }}"
     gpg_key = "{{ onepasswordRead "op://Private/u46qnn7wobabvk3tbbleqmor4u/Fingerprint" }}"
     gpg_shortkey = "{{ onepasswordRead "op://Private/Personal/Identification/GPG Key" }}"
-
+    atuin_username = "{{ onepasswordRead "op://Private/Atuin/username" }}"
+    atuin_password = "{{ onepasswordRead "op://Private/Atuin/password" }}"
+    atuin_key = "{{ onepasswordRead "op://Private/Atuin/Encryption Key" }}"
+    xdgCacheDir       = "{{ .chezmoi.homeDir }}/.cache"
+    xdgConfigDir      = "{{ .chezmoi.homeDir }}/.config"
+    xdgDataDir        = "{{ .chezmoi.homeDir }}/.local/share"
+    xdgStateDir       = "{{ .chezmoi.homeDir }}/.local/state"
 [git]
     autoPush = true
     encryption = "gpg"
@@ -30,3 +36,6 @@ progress = true
     pattern = "**/*.plist"
     command = "plutil"
     args = ["-convert", "xml1", "-o", "-", "-"]
+
+[scriptEnv]
+    PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
