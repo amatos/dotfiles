@@ -4,23 +4,31 @@ enable-ssh-support
 ttyname $GPG_TTY
 default-cache-ttl 60
 max-cache-ttl 120
+
 # Select a valid program path for PIN entry prompt
-# -- Linux (default /usr/bin/pinentry)
-#pinentry-program /usr/bin/pinentry
-#pinentry-program /usr/bin/pinentry-curses
-#pinentry-program /usr/bin/pinentry-gnome3
-#pinentry-program /usr/bin/pinentry-tty
-#pinentry-program /usr/bin/pinentry-x11
-# -- macOS - Intel silicon (default /usr/local/bin/pinentry)
-#pinentry-program /usr/local/bin/pinentry
-#pinentry-program /usr/local/bin/pinentry-curses
-#pinentry-program /usr/local/bin/pinentry-mac
-#pinentry-program /usr/local/bin/pinentry-tty
-# -- macOS - Apple silicon (default /opt/homebrew/bin/pinentry)
-#pinentry-program /opt/homebrew/bin/pinentry
-#pinentry-program /opt/homebrew/bin/pinentry-curses
-#pinentry-program /opt/homebrew/bin/pinentry-mac
-#pinentry-program /opt/homebrew/bin/pinentry-tty
+{{ if eq .chezmoi.os "darwin" }}
+# darwin
+{{ if eq .chezmoi.arch "arm64" }}
+# Apple silicon (default /opt/homebrew/bin/pinentry)
+# pinentry-program /opt/homebrew/bin/pinentry
+# pinentry-program /opt/homebrew/bin/pinentry-curses
+pinentry-program /opt/homebrew/bin/pinentry-mac
+# pinentry-program /opt/homebrew/bin/pinentry-tty
+{{ else if eq .chezmoi.arch "amd64" }}
+# Intel silicon (default /usr/local/bin/pinentry)
+# pinentry-program /usr/local/bin/pinentry
+# pinentry-program /usr/local/bin/pinentry-curses
+pinentry-program /usr/local/bin/pinentry-mac
+# pinentry-program /usr/local/bin/pinentry-tty
+{{ end }}
+{{ else if eq .chezmoi.os "linux" }}
+# linux
+# pinentry-program /usr/bin/pinentry
+# pinentry-program /usr/bin/pinentry-curses
+pinentry-program /usr/bin/pinentry-gnome3
+# pinentry-program /usr/bin/pinentry-tty
+# pinentry-program /usr/bin/pinentry-x11
+{{ else }}
 # -- macOS - MacPorts
 #pinentry-program /opt/local/bin/pinentry
 # -- macOS - MacGPG2
@@ -28,3 +36,4 @@ max-cache-ttl 120
 # -- Windows
 # https://developers.yubico.com/PGP/SSH_authentication/Windows.html
 #enable-win32-openssh-support
+{{ end }}
