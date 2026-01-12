@@ -15,6 +15,27 @@
     "mode": "system",
     "light": "Dracula Light (Alucard)",
     "dark": "Dracula",
-    "pig": "dog2"
-  }
-}
+  },
+  "file_types": {
+
+    "Ansible": [
+     "**.ansible.yml",
+      "**.ansible.yaml",
+      "**/defaults/*.yml",
+      "**/defaults/*.yaml",
+      "**/meta/*.yml",
+      "**/meta/*.yaml",
+      "**/tasks/*.yml",
+      "**/tasks/*.yaml",
+      "**/handlers/*.yml",
+      "**/handlers/*.yaml",
+      "**/group_vars/*.yml",
+      "**/group_vars/*.yaml",
+      "**/playbooks/*.yaml",
+      "**/playbooks/*.yml",
+      "**playbook*.yaml",
+      "**playbook*.yml",
+    ],
+
+  },
+

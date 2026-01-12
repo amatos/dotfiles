@@ -26,9 +26,9 @@ progress = true
 command = "ksdiff"
 args = [
   "--merge",
-  "--output", "{{ "{{ .Target }}" }}",
+  "--output", "{{ "{{ .Source }}" }}",
   "{{ "{{ .Destination }}" }}",
-  "{{ "{{ .Source }}" }}"
+  "{{ "{{ .Target }}" }}"
 ]
 
 [diff]
