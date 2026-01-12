@@ -14,6 +14,7 @@
   "theme": {
     "mode": "system",
     "light": "Dracula Light (Alucard)",
-    "dark": "Dracula"
+    "dark": "Dracula",
+    "pig": "dog2"
   }
 }
