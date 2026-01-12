@@ -33,9 +33,7 @@
       "**/playbooks/*.yaml",
       "**/playbooks/*.yml",
       "**playbook*.yaml",
-
-      "**playbook*.yml"
-   ],
-
+      "**playbook*.yml",
+    ],
   },
 }
