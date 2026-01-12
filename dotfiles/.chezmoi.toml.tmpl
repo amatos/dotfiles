@@ -23,8 +23,13 @@ progress = true
     args = ["--quiet"]
 
 [merge]
-    command = "/opt/homebrew/bin/ksdiff"
-    args = ["--merge", "--output", "{{ "{{ .Target }}" }}", "{{ "{{ .Destination }}" }}", "{{ "{{ .Source }}" }}"]
+command = "ksdiff"
+args = [
+  "--merge",
+  "--output", "{{ "{{ .Target }}" }}",
+  "{{ "{{ .Source }}" }}",
+  "{{ "{{ .Destination }}" }}"
+]
 
 [diff]
     pager = "diff-so-fancy"
