@@ -17,9 +17,8 @@
     "dark": "Dracula",
   },
   "file_types": {
-
     "Ansible": [
-     "**.ansible.yml",
+      "**.ansible.yml",
       "**.ansible.yaml",
       "**/defaults/*.yml",
       "**/defaults/*.yaml",
@@ -34,8 +33,9 @@
       "**/playbooks/*.yaml",
       "**/playbooks/*.yml",
       "**playbook*.yaml",
-      "**playbook*.yml",
-    ],
+
+      "**playbook*.yml"
+   ],
 
   },
-
+}
