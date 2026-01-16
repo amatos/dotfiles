@@ -12,27 +12,5 @@ else if command -v scutil &>/dev/null # macOS
     set -gx HOST "$(scutil --get ComputerName)"
 end
 
-# Editor.
-if test \( -e /usr/bin/nvim \) -o \( -e /opt/homebrew/bin/nvim \)
-    set -gx EDITOR nvim
-else
-    set -gx EDITOR vim
-end
-
-# If zed is installed, set zed as my visual editor, otherwise
-# If BBEdit is installed, use BBEdit
-
-if test \( -e /opt/homebrew/bin/zed \)
-    set -gx VISUAL "/opt/homebrew/bin/zed -w "
-else if test \( -e /usr/bin/zed \)
-    set -gx VISUAL "/usr/bin/zed -w "
-else if test \( -e /opt/homebrew/bin/bbedit \)
-    set -gx VISUAL "/opt/homebrew/bin/bbedit --wait "
-else if test \( -e /usr/bin/bbedit \)
-    set -gx VISUAL "/usr/bin/bbedit --wait "
-end
-
-set -gx SUDO_EDITOR "$EDITOR"
-
 # Use vi key bindings.
 #set -g fish_key_bindings fish_vi_key_bindings
