@@ -7,6 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "indent_guides": {
+    "coloring": "indent_aware",
+  },
+  // Soft-wrap and rulers
+  "soft_wrap": "none", // none, editor_width, preferred_line_length, bounded
+  "preferred_line_length": 80, // Column to soft-wrap
+  "show_wrap_guides": true, // Show/hide wrap guides (vertical rulers)
+  "wrap_guides": [78], // Where to position wrap_guides (character counts)
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
