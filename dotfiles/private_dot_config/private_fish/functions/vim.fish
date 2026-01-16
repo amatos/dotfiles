@@ -1,5 +1,7 @@
 function vim
-    if [ -e /usr/bin/nvim ]
+    if [ -e /opt/homebrew/bin/hx ]
+        hx $argv
+    else if [ -e /usr/bin/nvim ]
         nvim $argv
     else if [ -e /opt/homebrew/bin/nvim ]
         nvim $argv
