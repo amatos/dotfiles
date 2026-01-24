@@ -82,6 +82,7 @@ if status is-interactive
     starship init fish | source # Initialize starship
     jenv init - | source # Initialize jenv
     set -gx BAT_STYLE auto
+    set -g theme_color_scheme dracula # Set the color scheme to Dracula
 else
     set -gx BAT_STYLE plain
 end
