@@ -79,10 +79,11 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     atuin init --disable-up-arrow fish | source # Initialize atuin
     fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc # Display fastfetch
-    starship init fish | source # Initialize starship
     jenv init - | source # Initialize jenv
-    set -gx BAT_STYLE auto
+    rbenv init - --no-rehash fish | source
     set -g theme_color_scheme dracula # Set the color scheme to Dracula
+    set -gx BAT_STYLE auto
+    starship init fish | source # Initialize starship
 else
     set -gx BAT_STYLE plain
 end
