@@ -18,7 +18,28 @@
 # end
 
 function ls --wraps eza
-    eza --color=auto --color-scale=all --color-scale-mode=gradient --icons=auto --group-directories-first $argv
+    set newargs
+    set used_t 0
+
+    for arg in $argv
+        if string match -- '-*t*' $arg
+            # mark that -t was used
+            set used_t 1
+            # remove the 't' from combined flags
+            set cleaned (string replace -- 't' '' $arg)
+            if test "$cleaned" != "-"
+                set newargs $newargs $cleaned
+            end
+        else
+            set newargs $newargs $arg
+        end
+    end
+
+    if test $used_t -eq 1
+        eza --color=auto --color-scale=all --color-scale-mode=gradient --icons=auto --group-directories-first -snew $newargs
+    else
+        eza --color=auto --color-scale=all --color-scale-mode=gradient --icons=auto --group-directories-first $newargs
+    end
 end
 
 function la --wraps eza
