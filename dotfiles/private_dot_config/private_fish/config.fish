@@ -79,13 +79,15 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     atuin init --disable-up-arrow fish | source # Initialize atuin
     fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc # Display fastfetch
-    jenv init - | source # Initialize jenv
-    rbenv init - --no-rehash fish | source
-    set -g theme_color_scheme dracula # Set the color scheme to Dracula
-    set -gx BAT_STYLE auto
     starship init fish | source # Initialize starship
+    jenv init - | source # Initialize jenv
+    set -gx BAT_STYLE auto
+    set -g theme_color_scheme dracula # Set the color scheme to Dracula
 else
     set -gx BAT_STYLE plain
 end
 
 fish_config theme choose "Dracula Official"
+
+# Added by `rbenv init` on Sat Jan 24 14:03:47 EST 2026
+status --is-interactive; and rbenv init - --no-rehash fish | source
