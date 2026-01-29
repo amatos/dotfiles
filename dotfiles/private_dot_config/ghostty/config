@@ -1,0 +1,44 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /Users/alberth/Library/Application Support/com.mitchellh.ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Font settings
+font-family = "JetBrainsMono Nerd Font"
+font-size = 14
+
+# To generally disable most ligatures, use `-calt, -liga, -dlig`.
+font-feature = -calt
+
+# Themes
+theme = light:dracula,dark:dracula
+background-opacity = 0.92
+background-blur = true
+
+# The color space to use when interpreting terminal colors.
+# window-colorspace = display-p3
+
+# macOS settings
+macos-icon = xray
+# macos-titlebar-style = "native"
+
+# The command to run, usually a shell.
+command = /opt/homebrew/bin/fish
+# initial-command = shell:/opt/homebrew/bin/sesh connect $(/opt/homebrew/bin/sesh list -i | /opt/homebrew/bin/gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='>')
+
+# Shell integration settings
+shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path
+
+# Keybindings
