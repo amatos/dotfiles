@@ -23,22 +23,33 @@ font-size = 14
 font-feature = -calt
 
 # Themes
-theme = light:dracula,dark:dracula
+theme = light:alucard,dark:dracula
 background-opacity = 0.92
 background-blur = true
 
 # The color space to use when interpreting terminal colors.
-# window-colorspace = display-p3
+window-colorspace = display-p3
 
 # macOS settings
 macos-icon = xray
 # macos-titlebar-style = "native"
 
+# Security
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+
 # The command to run, usually a shell.
-command = /opt/homebrew/bin/fish
-# initial-command = shell:/opt/homebrew/bin/sesh connect $(/opt/homebrew/bin/sesh list -i | /opt/homebrew/bin/gum filter --limit 1 --placeholder 'Pick a sesh' --prompt='>')
+command = "/opt/homebrew/bin/fish --login"
+# initial-command = "/opt/homebrew/bin/fish --login -c 'sesh_start'"
 
 # Shell integration settings
-shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path
+shell-integration-features = sudo,title,ssh-env,ssh-terminfo,path
 
 # Keybindings
+
+# Misc.
+clipboard-trim-trailing-spaces = true
+confirm-close-surface = false
+quit-after-last-window-closed = true
+mouse-shift-capture = true
+link-url = true
