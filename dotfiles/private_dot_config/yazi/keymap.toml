@@ -1,0 +1,14 @@
+[[mgr.prepend_keymap]]
+on   = [ "b", "a" ]
+run  = "plugin mactag add"
+desc = "Tag selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "b", "r" ]
+run  = "plugin mactag remove"
+desc = "Untag selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "c", "m" ]
+run  = "plugin chmod"
+desc = "Chmod on selected files"

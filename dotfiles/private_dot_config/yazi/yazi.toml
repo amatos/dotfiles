@@ -3,13 +3,14 @@ use = "dracula"
 
 [mgr]
 ratio = [1, 2, 4]
-sort_by = "mtime"
-sort_sensitive = true
-sort_reverse = true
-sort_dir_first = true
+sort_by = "natural"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = false
 linemode = "none"
 show_hidden = true
 show_symlink = true
+title_format = "{cwd}"
 
 [preview]
 tab_size = 2
@@ -128,3 +129,23 @@ prepend_previewers = [{ mime = "image/heic", run = "heic" }]
 
 [log]
 enabled = false
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "mactag"
+url = "*"
+run = "mactag"
+
+[[plugin.prepend_fetchers]]
+id  = "mactag"
+url = "*/"
+run = "mactag"
