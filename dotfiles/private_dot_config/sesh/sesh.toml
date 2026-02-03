@@ -1,0 +1,96 @@
+#
+# ███████╗███████╗███████╗██╗  ██╗     ██████╗ ██████╗ ███╗   ██╗███████╗██╗ ██████╗
+# ██╔════╝██╔════╝██╔════╝██║  ██║    ██╔════╝██╔═══██╗████╗  ██║██╔════╝██║██╔════╝
+# ███████╗█████╗  ███████╗███████║    ██║     ██║   ██║██╔██╗ ██║█████╗  ██║██║  ███╗
+# ╚════██║██╔══╝  ╚════██║██╔══██║    ██║     ██║   ██║██║╚██╗██║██╔══╝  ██║██║   ██║
+# ███████║███████╗███████║██║  ██║    ╚██████╗╚██████╔╝██║ ╚████║██║     ██║╚██████╔╝
+# ╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚═╝ ╚═════╝
+#
+# Smart session manager for the terminal
+# https://github.com/joshmedeski/sesh
+
+strict_mode = false
+
+blacklist = [
+  "^scratch$",
+  "^_"
+]
+
+sort_order = ["tmux", "tmuxinator", "config", "zoxide"]
+dir_length = 3
+
+[default_session]
+preview_command = "eza --all --git --icons --color=always {}"
+startup_command_ignore_dirs = ["~/.config"]
+
+[[session]]
+name = "Home 🏠"
+path = "~"
+disable_startup_command = true
+
+[[session]]
+name = "Documents 📄"
+path = "~/Documents"
+startup_command = "yazi"
+
+[[session]]
+name = "Pictures 📸"
+path = "~/Pictures"
+startup_command = "ls"
+
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "yazi"
+
+[[session]]
+name = "Desktop 🖥️"
+path = "~/Desktop"
+startup_command = "ls"
+
+[[session]]
+name = "Source Codes 📂"
+path = "~/src"
+startup_command = "yazi"
+
+[[session]]
+name = "tmux config"
+path = "~/.config/tmux"
+startup_command = "nvim tmux.conf ; exit"
+preview_command = "bat --color=always ~/.config/tmux/tmux.conf"
+
+[[session]]
+name = "sesh config"
+path = "~/.config/sesh"
+startup_command = "nvim sesh.toml ; exit"
+preview_command = "bat --color=always ~/.config/sesh/sesh.toml"
+
+[[session]]
+name = "CMSC 315"
+path = "~/src/CMSC315"
+startup_command = "ls"
+
+[[session]]
+name = "fastfetch"
+path = "~/.config/fastfetch"
+startup_command = "fastfetch"
+preview_command = "fastfetch"
+
+[[session]]
+name = "chezmoi"
+path = "~/.local/share/chezmoi"
+startup_command = "chezmoi status"
+preview_command = "chezmoi status"
+
+[[session]]
+name = "chezmoi (running) config"
+path = "~/.config/chezmoi"
+startup_command = "nvim chezmoi.toml ; exit"
+preview_command = "bat --color=always ~/.config/chezmoi/chezmoi.toml"
+
+[[session]]
+name = "chezmoi (template) config"
+path = "~/.local/share/chezmoi/dotfiles/"
+startup_command = "nvim .chezmoi.toml.tmpl ; exit"
+preview_command = "bat --color=always ~/.local/share/chezmoi/dotfiles/.chezmoi.toml.tmpl"
+
