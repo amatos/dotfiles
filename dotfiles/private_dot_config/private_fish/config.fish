@@ -124,7 +124,6 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # ###################################
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    atuin init --disable-up-arrow fish | source # Initialize atuin
     fastfetch -c $HOME/.config/fastfetch/config-compact.jsonc # Display fastfetch
     starship init fish | source # Initialize starship
     jenv init - | source # Initialize jenv
@@ -134,6 +133,7 @@ if status is-interactive
     direnv hook fish | source # Initialize direnv
     set -gx BAT_STYLE auto
     set -g theme_color_scheme dracula # Set the color scheme to Dracula
+    atuin init --disable-up-arrow fish | source # Initialize atuin
 else
     set -gx BAT_STYLE plain
 end
