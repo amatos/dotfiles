@@ -3,9 +3,9 @@
 # from ~/.macos — https://mths.be/macos
 
 COMPUTER_NAME="Codex"
-# LANGUAGES=(en-US)
-# LOCALE="en_US@currency=USD"
-# MEASUREMENT_UNITS="Inches"
+LANGUAGES=(en-US)
+LOCALE="en_US@currency=USD"
+MEASUREMENT_UNITS="Inches"
 SCREENSHOTS_FOLDER="${HOME}/Pictures/Screenshots"
 SCREENSHOTS_FORMAT="png"
 
@@ -48,17 +48,17 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 ###############################################################################
 
 # Set language and text formats
-# defaults write NSGlobalDomain AppleLanguages -array ${LANGUAGES[@]}
-# defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
-# defaults write NSGlobalDomain AppleMeasurementUnits -string "$MEASUREMENT_UNITS"
-# defaults write NSGlobalDomain AppleMetricUnits -bool false
+defaults write NSGlobalDomain AppleLanguages -array ${LANGUAGES[@]}
+defaults write NSGlobalDomain AppleLocale -string "$LOCALE"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "$MEASUREMENT_UNITS"
+defaults write NSGlobalDomain AppleMetricUnits -bool false
 
 # Using systemsetup might give Error:-99, can be ignored (commands still work)
 # systemsetup manpage: https://ss64.com/osx/systemsetup.html
 
 # Set the time zone
-# sudo defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
-# sudo systemsetup -setusingnetworktime on
+sudo defaults write /Library/Preferences/com.apple.timezone.auto Active -bool YES
+sudo systemsetup -setusingnetworktime on
 
 ###############################################################################
 # System                                                                      #
@@ -101,7 +101,7 @@ sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.serve
 # defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Automatically quit printer app once the print jobs complete
-# defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Disable the “Are you sure you want to open this application?” dialog
 # defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -226,8 +226,8 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Avoid creating .DS_Store files on network or USB volumes
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Disable disk image verification
 # defaults write com.apple.frameworks.diskimages skip-verify -bool true
@@ -257,7 +257,7 @@ chflags nohidden ~/Library
 ###############################################################################
 
 # Show indicator lights for open applications in the Dock
-# defaults write com.apple.dock show-process-indicators -bool true
+defaults write com.apple.dock show-process-indicators -bool true
 
 # Don’t animate opening applications from the Dock
 # defaults write com.apple.dock launchanim -bool false
@@ -266,7 +266,7 @@ chflags nohidden ~/Library
 defaults write com.apple.dock autohide -bool true
 
 # Make Dock icons of hidden applications translucent
-# defaults write com.apple.dock showhidden -bool true
+defaults write com.apple.dock showhidden -bool true
 
 # No bouncing icons
 # defaults write com.apple.dock no-bouncing -bool true
@@ -363,7 +363,7 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 ###############################################################################
 
 # Enable the automatic update check
-# defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # Check for software updates weekly (`dot update` includes software updates)
 # defaults write com.apple.SoftwareUpdate ScheduleFrequency -string 7
