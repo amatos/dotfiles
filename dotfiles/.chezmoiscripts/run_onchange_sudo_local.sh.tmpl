@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+{{ template "shared_script_utils.bash" . }}
+
+# /etc/pam.d/sudo_local hash: {{ include "/etc/pam.d/sudo_local" | sha256sum }}
+# /etc/pam.d/sudo_local.template hash: {{ include "/etc/pam.d/sudo_local.template" | sha256sum }}
+echo "Running run-after-macos-update.sh
+~/.local/bin/run-after-macos-update.sh
+
+_safeExit_
