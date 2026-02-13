@@ -64,8 +64,9 @@ export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
 
 # Provide a separate folder to install additional apps:
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+#export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 #export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=~/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 if ! command -v complete >/dev/null; then
    echo "brew complete NOT installed for BREW_PATH=$BREW_PATH to $HOMEBREW_CASK_OPTS"
@@ -291,19 +292,6 @@ fi
 ### See https://wilsonmar.github.io/sonar
 #export PATH="$PATH:$HOME/onpath/sonar-scanner/bin"
 
-
-#### See https://wilsonmar.github.io/android-install/
-# If working with Android Studio on Intel Mac:
-export ANDROID_HOME=/usr/local/opt/android-sdk
-if [ -d "$PYENV_ROOT" ]; then  # folder was created for Python3, so:
-   export PATH=$PATH:$ANDROID_HOME/tools
-   export PATH=$PATH:$ANDROID_HOME/platform-tools
-   export PATH=$PATH:$ANDROID_HOME/build-tools/19.1.0
-   export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-   export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
-fi
-
-
 #### for Selenium
 if [ -d "$BREW_PATH/chromedriver" ]; then
    export PATH="$PATH:/${BREW_PATH}/chromedriver"
@@ -326,7 +314,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 ### See https://gist.github.com/fraune/0831edc01fa89f46ce43b8bbc3761ac7
-if grep -q 'auth sufficient pam_tid.so' /etc/pam.d/sudo_local; then
+if grep -q 'auth       sufficient     pam_tid.so' /etc/pam.d/sudo_local; then
   echo "Touch ID is enabled for sudo."
 else
   echo "Touch ID is not enabled for sudo. run-after-macos-update.sh"
@@ -485,3 +473,4 @@ if [ -f "$HOME/.mac-setup.env" ]; then
 fi
 
 # END
+source /Users/alberth/.config/op/plugins.sh
