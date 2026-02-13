@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "prettier": {
+    "allowed": true,
+  },
   "indent_guides": {
     "coloring": "indent_aware",
   },
@@ -43,5 +46,10 @@
       "**playbook*.yaml",
       "**playbook*.yml",
     ],
+  },
+  "languages": {
+    "HTML": {
+      "formatter": "language_server",
+    },
   },
 }
