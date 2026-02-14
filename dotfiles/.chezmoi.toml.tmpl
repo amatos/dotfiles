@@ -16,7 +16,8 @@ progress = true
     xdgStateDir       = "{{ .chezmoi.homeDir }}/.local/state"
 
 [git]
-    autoPush = true
+    autoCommit = true
+    autoPush = false
     encryption = "gpg"
 
 [status]
