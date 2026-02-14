@@ -9,6 +9,8 @@ MEASUREMENT_UNITS="Inches"
 SCREENSHOTS_FOLDER="${HOME}/Pictures/Screenshots"
 SCREENSHOTS_FORMAT="png"
 
+echo "Running customize-macos.sh"
+
 # Topics
 #
 # - Computer & Host name
