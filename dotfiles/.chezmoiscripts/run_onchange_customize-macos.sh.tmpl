@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+{{ template "shared_script_utils.bash" . }}
+
+# This script runs my customize-macos.sh script
+# Normally, this should be a single run-once and never again,
+# however, in case I change the script, I may want this to run again.
+# Accordingly, the below on-change hash check looks to see if the file has
+# changed, and, if so, runs the script again.
+#
+# on-change hash: {{ include "../../../bin/customize-macos.sh" | sha256sum }}
+
+echo "Running ${HOME}/.local/bin/customize-macos.sh"
+${HOME}/.local/bin/customize-macos.sh
+
+_safeExit_

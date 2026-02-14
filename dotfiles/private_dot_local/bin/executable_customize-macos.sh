@@ -387,3 +387,5 @@ defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
   killall "${app}" &> /dev/null
 done
+
+echo "Finished running customize-macos.sh"
