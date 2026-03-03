@@ -383,6 +383,11 @@ defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 # defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 ###############################################################################
+# Enable SSHd                                                                 #
+###############################################################################
+sudo systemsetup -setremotelogin on
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
