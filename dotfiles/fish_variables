@@ -55,7 +55,7 @@ SETUVAR _fisher_scrumplex_2F_bobthefisher_files:\x7e/\x2econfig/fish/functions/_
 SETUVAR _fisher_tbcrawford_2F_opah_2E_fish_files:\x7e/\x2econfig/fish/functions/_opah_clear\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_config\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_doctor\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_find_config\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_init_ui\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_load\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_parse_yaml\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_paths\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_refresh\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_reinit\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_show_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_opah_ui\x2efish\x1e\x7e/\x2econfig/fish/functions/opah\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/opah\x2efish\x1e\x7e/\x2econfig/fish/completions/opah\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_key_bindings:fish_default_key_bindings
-SETUVAR --export fish_user_paths:/opt/homebrew/bin\x1e/Users/alberth/\x2elocal/bin
+SETUVAR --export fish_user_paths:/Users/alberth/Library/Application\x20Support/JetBrains/Toolbox/scripts\x1e/opt/homebrew/bin\x1e/Users/alberth/\x2elocal/bin
 SETUVAR --export fisher_path:/Users/alberth/\x2econfig/fish
 SETUVAR forgit_add:ga\x3a
 SETUVAR forgit_cherry_pick:gcp\x3a

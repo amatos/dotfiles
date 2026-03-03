@@ -10,9 +10,9 @@ DRYRUN=false
 # Set Options
 # ######################
 # Confirm we have BASH greater than v4
-[ "${BASH_VERSINFO:-0}" -ge 4 ] || {
-    shopt -s nullglob globstar # Make `for f in *.txt` work when `*.txt` matches zero files
-}
+# [ "${BASH_VERSINFO:-0}" -ge 4 ] || {
+#     shopt -s nullglob globstar # Make `for f in *.txt` work when `*.txt` matches zero files
+# }
 
 trap '_trapCleanup_ ${LINENO} ${BASH_LINENO} "${BASH_COMMAND}" "${FUNCNAME[*]}" "${0}" "${BASH_SOURCE[0]}"' EXIT INT TERM SIGINT SIGQUIT SIGTERM
 set -o errtrace # Trap errors in subshells and functions
