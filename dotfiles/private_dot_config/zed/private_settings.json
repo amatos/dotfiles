@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
   "prettier": {
     "allowed": true,
   },
@@ -17,12 +22,12 @@
   "soft_wrap": "editor_width", // none, editor_width, preferred_line_length, bounded
   "preferred_line_length": 80, // Column to soft-wrap
   "show_wrap_guides": true, // Show/hide wrap guides (vertical rulers)
-  "wrap_guides": [78, 100], // Where to position wrap_guides (character counts)
+  "wrap_guides": [78, 118], // Where to position wrap_guides (character counts)
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   "icon_theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha"
+    "dark": "Catppuccin Mocha",
   },
   "ui_font_size": 16,
   "buffer_font_size": 15,
@@ -54,6 +59,17 @@
   "languages": {
     "HTML": {
       "formatter": "language_server",
+    },
+  },
+  "lsp": {
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "build": {
+            "onSave": false,
+          },
+        },
+      },
     },
   },
 }
