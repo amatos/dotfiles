@@ -9,3 +9,6 @@ export GREP_OPTIONS='--color=auto'
 
 
 # END
+
+# DockFlow CLI alias
+alias dockflow="/Applications/DockFlow.app/Contents/MacOS/DockFlowCLI"
