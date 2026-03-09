@@ -137,3 +137,6 @@ if status is-interactive
 else
     set -gx BAT_STYLE plain
 end
+
+# DockFlow CLI alias
+alias dockflow "/Applications/DockFlow.app/Contents/MacOS/DockFlowCLI"
