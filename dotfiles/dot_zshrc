@@ -474,3 +474,6 @@ fi
 
 # END
 source /Users/alberth/.config/op/plugins.sh
+
+# DockFlow CLI alias
+alias dockflow="/Applications/DockFlow.app/Contents/MacOS/DockFlowCLI"
