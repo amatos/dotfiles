@@ -80,7 +80,7 @@ if [ -f "$HOMEBREW_PREFIX/bin/zoxide" ]; then # is installed:
    eval "$(zoxide init zsh)"
 fi
 if [ -f "$HOMEBREW_PREFIX/bin/fzf" ]; then # is installed:
-    source <(fzf --zsh)
+    FZF_CTRL_R_COMMAND= source <(fzf --zsh)
 fi
 if [ -f "$HOMEBREW_PREFIX/bin/direnv" ]; then # is installed:
     eval "$(direnv hook zsh)"
