@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+{{ template "shared_script_utils.bash" . }}
+
+_login() {
+    if [[ ! -e "${HOME}/.config/atuin/.logged_in" ]]; then
+        echo "Logging in to Atuin server"
+        atuin login --username "{{ .atuin_username }}" --password "{{ .atuin_password }}" --key "{{ .atuin_key }}"
+        touch -f "${HOME}/.config/atuin/.logged_in"
+    fi
+}
+
+if [ ! -e /opt/homebrew/bin/brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ ! -e /opt/homebrew/bin/atuin ]; then
+    brew install atuin
+fi
+
+_login
+
+_safeExit_ 0
