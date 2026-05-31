@@ -81,3 +81,6 @@ fi
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
 export PATH='/Applications/Clean Links.app/Contents/MacOS':"$PATH"
+
+# --- Executables ---
+[ -f "$HOMEBREW_PREFIX/bin/fastfetch" ] && "$HOMEBREW_PREFIX/bin/fastfetch"
