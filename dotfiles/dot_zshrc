@@ -2,7 +2,7 @@
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=nvim
-export VISUAL=/opt/homebrew/bin/zed
+export VISUAL='/opt/homebrew/bin/zed -w'
 
 # For compilers to find openssl per https://qiita.com/nahshi/items/fcf4898f7c45f11a5c63
 export CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
@@ -19,7 +19,7 @@ if [ -f "/opt/homebrew/bin/brew" ]; then # is installed:
    # /opt/homebrew/ contains folders bin, Cellar, Caskroom, completions, lib, opt, sbin, var, etc.
    # /opt/homebrew/bin/ contains brew, atom, git, go, htop, jq, tree, vault, wget, xz, zsh, etc. installed
    # /opt/homebrew/share/ contains emacs, fish, man, perl5, vim, zsh, zsh-completions, etc.
-   export PATH="$HOMEBREW_PREFIX/bin/:$HOMEBREW_PREFIX/share/:${PATH}"
+   export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/share:${PATH}"
 fi
 
 # Oh-my-zsh
