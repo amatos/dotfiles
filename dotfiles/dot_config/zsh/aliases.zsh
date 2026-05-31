@@ -37,4 +37,14 @@ if [ -f "$HOMEBREW_PREFIX/bin/tmux" ]; then
     alias tn="tmux new -s" # Create named session
 fi
 
+# ===========================================================================
+# bat (better cat)
+# ===========================================================================
 [ -f "$HOMEBREW_PREFIX/bin/bat" ] && alias cat="bat "
+
+# ===========================================================================
+# Tailscale (network management)
+# ===========================================================================
+if [ -e "/Applications/Tailscale.app" ]; then
+    alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+fi
