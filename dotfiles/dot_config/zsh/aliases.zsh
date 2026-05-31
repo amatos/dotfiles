@@ -9,10 +9,10 @@
 # -D: date format (macOS BSD ls)
 if [ -f "$HOMEBREW_PREFIX/bin/eza" ]; then
    alias ls="eza --icons --smart-group --time-style=iso --git"
-   alias ll="ls -ahlG --classify=auto "
-   alias llt="ls -ahltG --classify=auto --sort=modified --reverse " # sorted by time
-   alias lls="ls -ahlsG --classify=auto " # show size
-   alias "ll@"="ls -@ahlG --classify=auto " # show extended attributes (macOS)
+   alias ll="ls -ahl --classify=auto "
+   alias llt="ls -ahlt --classify=auto --sort=modified --reverse " # sorted by time
+   alias lls="ls -ahls --classify=auto " # show size
+   alias "ll@"="ls -@ahl --classify=auto " # show extended attributes (macOS)
 else
     alias ll="ls -ahlFG -D '%Y-%m-%d %H:%M:%S'"
     alias llt="ls -ahltFG -D '%Y-%m-%d %H:%M:%S'" # sorted by time
