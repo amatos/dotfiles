@@ -7,11 +7,19 @@
 # -F: append type indicator (/ for dirs, * for executables)
 # -G: colorized output (macOS BSD ls)
 # -D: date format (macOS BSD ls)
-[ -f "$HOMEBREW_PREFIX/bin/eza" ] && alias ls="eza --icons"
-alias ll="ls -ahlFG -D '%Y-%m-%d %H:%M:%S'"
-alias llt="ls -ahltFG -D '%Y-%m-%d %H:%M:%S'" # sorted by time
-alias lls="ls -ahlsFG -D '%Y-%m-%d %H:%M:%S'" # show size
-alias "ll@"="ls -@ahlFG -D '%Y-%m-%d %H:%M:%S'" # show extended attributes (macOS)
+if [ -f "$HOMEBREW_PREFIX/bin/eza" ]; then
+   alias ls="eza --icons --smart-group --time-style=iso --git"
+   alias ll="ls -ahlG --classify=auto "
+   alias llt="ls -ahltG --classify=auto --sort=modified --reverse " # sorted by time
+   alias lls="ls -ahlsG --classify=auto " # show size
+   alias "ll@"="ls -@ahlG --classify=auto " # show extended attributes (macOS)
+else
+    alias ll="ls -ahlFG -D '%Y-%m-%d %H:%M:%S'"
+    alias llt="ls -ahltFG -D '%Y-%m-%d %H:%M:%S'" # sorted by time
+    alias lls="ls -ahlsFG -D '%Y-%m-%d %H:%M:%S'" # show size
+    alias "ll@"="ls -@ahlFG -D '%Y-%m-%d %H:%M:%S'" # show extended attributes (macOS)
+fi
+
 
 # ===========================================================================
 # Archive (macOS-friendly tar)
