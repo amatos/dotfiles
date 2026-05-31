@@ -12,6 +12,7 @@ if [ -f "/opt/homebrew/bin/brew" ]; then # is installed:
    export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
    export HOMEBREW_REPOSITORY="/opt/homebrew"
    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+   export HOMEBREW_UPGRADE_GREEDY=true
    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
    # /opt/homebrew/ contains folders bin, Cellar, Caskroom, completions, lib, opt, sbin, var, etc.
    # /opt/homebrew/bin/ contains brew, atom, git, go, htop, jq, tree, vault, wget, xz, zsh, etc. installed
