@@ -1,6 +1,8 @@
 # --- Environment ---
 export GPG_TTY=$(tty)
 export CLICOLOR=1
+export EDITOR=nvim
+export VISUAL=/opt/homebrew/bin/zed
 
 # For compilers to find openssl per https://qiita.com/nahshi/items/fcf4898f7c45f11a5c63
 export CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
