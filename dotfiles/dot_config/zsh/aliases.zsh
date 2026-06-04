@@ -48,3 +48,8 @@ fi
 if [ -e "/Applications/Tailscale.app" ]; then
     alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 fi
+
+# ===========================================================================
+# Homebrew
+# ===========================================================================
+[ -f "$HOMEBREW_PREFIX/bin/brew" ] && alias bubu="brew update && cu --all --include-mas"
