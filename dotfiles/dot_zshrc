@@ -5,7 +5,7 @@ ZED=/opt/homebrew/bin/zed
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=nvim
-[ -e $ZED ] && export VISUAL='$ZED -w'
+[ -e $ZED ] && export VISUAL="$ZED -w"
 [ -e $PINENTRY_MAC ] && export SUDO_ASKPASS=$PINENTRY_MAC
 
 # For compilers to find openssl per https://qiita.com/nahshi/items/fcf4898f7c45f11a5c63
