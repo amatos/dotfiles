@@ -23,7 +23,7 @@ font-size = 14
 font-feature = -calt
 
 # Themes
-light:alucard,dark:dracula
+theme = light:alucard,dark:dracula
 background-opacity = 0.90
 background-blur = true
 
