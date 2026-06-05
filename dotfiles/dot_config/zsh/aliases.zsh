@@ -52,4 +52,4 @@ fi
 # ===========================================================================
 # Homebrew
 # ===========================================================================
-[ -f "$HOMEBREW_PREFIX/bin/brew" ] && alias bubu="brew update && cu --all --include-mas"
+[ -f "$HOMEBREW_PREFIX/bin/brew" ] && alias bubu="brew update && brew cu --all --include-mas"
