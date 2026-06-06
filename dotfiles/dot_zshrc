@@ -5,6 +5,7 @@ ZED=/opt/homebrew/bin/zed
 export GPG_TTY=$(tty)
 export CLICOLOR=1
 export EDITOR=nvim
+export ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 [ -e $ZED ] && export VISUAL="$ZED -w"
 [ -e $PINENTRY_MAC ] && export SUDO_ASKPASS=$PINENTRY_MAC
 
