@@ -65,6 +65,9 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 
+# Autoload completions:
+autoload -Uz compinit && compinit
+
 # Language environment:
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.utf-8"
