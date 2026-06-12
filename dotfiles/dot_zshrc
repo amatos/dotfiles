@@ -14,7 +14,6 @@ export CLICOLOR=1
 export EDITOR=nvim
 export ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 [ -e $ZED ] && export VISUAL="$ZED -w"
-[ -e $PINENTRY_MAC ] && export SUDO_ASKPASS=$PINENTRY_MAC
 
 # For compilers to find openssl per https://qiita.com/nahshi/items/fcf4898f7c45f11a5c63
 export CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
