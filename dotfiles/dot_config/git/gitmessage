@@ -1,6 +1,6 @@
 [Type](Scope): <Short summary in imperative mood, max 50 chars>
 
-# ─── Type of change ────────────────────────────────────────────────
+# ─── Type of change ───
 # feat: A new feature for the user.
 # fix: A bug fix.
 # docs: Documentation-only changes.
@@ -9,14 +9,14 @@
 # test: Adding missing tests or correcting existing tests.
 # chore: Updating build tasks, package manager configs, etc.
 
-# ─── Why is this change required? ──────────────────────────────────
+# ─── Why is this change required? ───
 # - Explain the context or problem being solved.
 # - Do not explain "how" (the code shows how).
 
-# ─── What was changed? ─────────────────────────────────────────────
+# ─── What was changed? ───
 # - Bullet points summarizing the structural shifts.
 # - Keep lines wrapped under 72 characters.
 
-# ─── References / Trackers ─────────────────────────────────────────
+# ─── References / Trackers ───
 # Resolve: #JIRA-123
 # See also: #456
