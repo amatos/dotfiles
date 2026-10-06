@@ -58,3 +58,7 @@ link-url = true
 mouse-shift-capture = true
 notify-on-command-finish = unfocused
 quit-after-last-window-closed = false
+mouse-scroll-multiplier = 3
+
+# ghostty has no "unlimited" mode; bytes, not lines (~500k-1M lines).
+scrollback-limit = 100000000
