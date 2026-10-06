@@ -19,6 +19,11 @@ export ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 export CFLAGS="-I$(brew --prefix readline)/include -I$(brew --prefix openssl)/include -I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-L$(brew --prefix readline)/lib -L$(brew --prefix openssl)/lib"
 
+# Helper: prepend a directory to PATH only if it exists and isn't already present
+path_prepend() {
+    [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]] && export PATH="$1:$PATH"
+}
+
 # Homebrew
 if [ -f "/opt/homebrew/bin/brew" ]; then # is installed:
     export HOMEBREW_PREFIX="/opt/homebrew"
@@ -30,7 +35,8 @@ if [ -f "/opt/homebrew/bin/brew" ]; then # is installed:
     # /opt/homebrew/ contains folders bin, Cellar, Caskroom, completions, lib, opt, sbin, var, etc.
     # /opt/homebrew/bin/ contains brew, atom, git, go, htop, jq, tree, vault, wget, xz, zsh, etc. installed
     # /opt/homebrew/share/ contains emacs, fish, man, perl5, vim, zsh, zsh-completions, etc.
-    export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/share:${PATH}"
+    path_prepend "$HOMEBREW_PREFIX/share"
+    path_prepend "$HOMEBREW_PREFIX/bin"   # prepend last so bin ends up first
 fi
 
 # Oh-my-zsh
@@ -44,7 +50,8 @@ fi
 #    ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 #    # Set name of the theme to load --- if set to "random", it will
-#    # load a random theme each time oh-my-zsh is loaded, in which case,
+#    # load a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+#    # a random theme each time oh-my-zsh is loaded, in which case,
 #    # to know which specific one was loaded, run: echo $RANDOM_THEME
 #    ZSH_THEME="robbyrussell"
 #    source $ZSH/oh-my-zsh.sh
@@ -121,19 +128,17 @@ if ! command -v maven >/dev/null; then
         #/usr/local/Cellar/maven
         export M2_HOME=/usr/local/Cellar/maven/3.5.0/libexec
         export M2=$M2_HOME/bin
-        export PATH=$PATH:$M2_HOME/bin
+        [ -d "$M2_HOME/bin" ]    && export PATH="$PATH:$M2_HOME/bin"
         export MAVEN_HOME=/usr/local/opt/maven
-        export PATH=$MAVEN_HOME/bin:$PATH
+        [ -d "$MAVEN_HOME/bin" ] && export PATH="$MAVEN_HOME/bin:$PATH"
     fi
 fi
 
 # See https://wilsonmar.github.io/rustlang
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
+path_prepend "$HOME/.cargo/bin"
 
 # --- PATH ---
-export PATH="$HOME/.local/bin:$PATH"
+path_prepend "$HOME/.local/bin"
 
 # --- Shell modules ---
 
@@ -160,4 +165,4 @@ fi
 # --- Aliases ---
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
-export PATH='/Applications/Clean Links.app/Contents/MacOS':"$PATH"
+path_prepend '/Applications/Clean Links.app/Contents/MacOS'
