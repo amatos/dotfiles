@@ -144,9 +144,9 @@ fi
 if [ -f "$HOMEBREW_PREFIX/bin/atuin" ]; then # is installed:
     eval "$(atuin init zsh --disable-up-arrow)"
 fi
-# if [ -f "$HOMEBREW_PREFIX/bin/starship" ]; then # is installed:
-#    eval "$(starship init zsh)"
-# fi
+if [ -f "$HOMEBREW_PREFIX/bin/starship" ]; then # is installed:
+   eval "$(starship init zsh)"
+fi
 if [ -f "$HOMEBREW_PREFIX/bin/zoxide" ]; then # is installed:
     eval "$(zoxide init --cmd cd zsh)"
 fi
@@ -161,7 +161,3 @@ fi
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
 export PATH='/Applications/Clean Links.app/Contents/MacOS':"$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/alberth/.lmstudio/bin"
-# End of LM Studio CLI section
