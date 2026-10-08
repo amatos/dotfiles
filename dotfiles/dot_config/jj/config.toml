@@ -1,0 +1,20 @@
+# Ansible managed
+[user]
+name = "Alberth Matos"
+email = "alberth@matos.cc"
+
+[ui]
+default-command = ["log", "--reversed"]
+show-cryptographic-signatures = true
+diff-formatter = "ksdiff"
+merge-editor = "ksdiff"
+
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "F41BDBF6171A3BB4"
+
+[merge-tools.ksdiff]
+diff-invocation-mode = "file-by-file"
+diff-args = ["--partial-changeset", "$left", "$right"]
+merge-args = ["--merge", "--output", "$output", "--base", "$base", "$left", "$right"]
