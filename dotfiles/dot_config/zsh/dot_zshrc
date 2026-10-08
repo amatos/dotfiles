@@ -1,0 +1,108 @@
+# Ansible managed
+
+typeset -U path cdpath fpath manpath
+
+# ── History (effectively unlimited) ─────────────────────────────────────────
+HISTFILE="$HOME/.local/share/zsh/history"
+HISTSIZE=10000000000
+SAVEHIST=10000000000
+setopt HIST_IGNORE_SPACE HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST SHARE_HISTORY EXTENDED_HISTORY
+
+# ── oh-my-zsh (prompt is starship) ──────────────────────────────────────────
+export ZSH="/Users/alberth/.local/share/oh-my-zsh"
+ZSH_THEME=""
+plugins=(git kubectl history git-extras history-substring-search)
+HIST_STAMPS="dd.mm.yyyy"
+DISABLE_AUTO_UPDATE="true"
+zstyle ':omz:update' mode disabled
+zstyle ':omz:update' verbosity minimal
+zstyle ':completion:*' menu select
+source "$ZSH/oh-my-zsh.sh"
+
+# ── Plugins (fzf-tab first: after compinit, before widget wrappers) ─────────
+for plugin in \
+    /opt/homebrew/share/fzf-tab/fzf-tab.plugin.zsh \
+    /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh \
+    /opt/homebrew/share/zsh-you-should-use/you-should-use.plugin.zsh; do
+  [ -f "$plugin" ] && source "$plugin"
+done
+unset plugin
+
+# ── Interactive setup (zsh.nix initContent) ─────────────────────────────────
+setopt BANG_HIST INC_APPEND_HISTORY HIST_IGNORE_ALL_DUPS HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS HIST_REDUCE_BLANKS HIST_VERIFY NO_BEEP
+
+# Reset leaked mouse tracking escapes (e.g. from htop in another Zellij pane)
+# before every prompt so they don't get interpreted as shell input.
+_reset_mouse_tracking() {
+  printf '\e[?1000l\e[?1002l\e[?1003l\e[?1006l'
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _reset_mouse_tracking
+
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':fzf-tab:*' fzf-flags --height=90% --pointer='>'
+zstyle ':fzf-tab:*' fzf-min-height 15
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --icons=always --color=always -a $realpath'
+zstyle ':fzf-tab:complete:eza:*' fzf-preview 'eza -1 --icons=always --color=always -a $realpath'
+zstyle ':fzf-tab:complete:(bat|cat|nvim|vim):*' fzf-preview \
+  'bat --color=always --style=numbers $realpath 2>/dev/null || eza -1 --color=always $realpath'
+
+[ -f "$HOME/.config/op/plugins.sh" ] && source "$HOME/.config/op/plugins.sh"
+
+# ── Aliases ─────────────────────────────────────────────────────────────────
+alias cat='bat  --style=header,grid'
+alias l=eza
+alias ll='eza -l --icons auto'
+alias la='eza -la --icons auto'
+alias lt='eza -lT --icons auto'
+alias ltt='eza -lT --level=2 --icons auto'
+alias tree='eza -T --all --level=3 --icons auto'
+alias ls='eza -abghlUm --icons auto'
+alias big='eza -lSh --icons auto'
+alias grep=rg
+alias vim=nvim
+alias vi=nvim
+alias vimdiff='nvim -d'
+alias clipboard=pbcopy
+alias paste=pbpaste
+alias tailscale=/Applications/Tailscale.app/Contents/MacOS/Tailscale
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias sshk='ssh -o StrictHostKeyChecking=no'
+alias sshv='ssh -vvv'
+alias sshp='ssh -o PreferredAuthentications=password'
+alias ssht='ssh -o ConnectTimeout=5'
+alias sshx='ssh -X'
+alias sshnone='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias git-log='git log --graph --pretty=format:'"'"'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"'"' --abbrev-commit'
+alias git-author='echo '"'"'👤 Commit Author History:'"'"' && git log --pretty=format:'"'"'%h%x09%an%x09%ad%x09%s'"'"''
+alias cd=z
+
+# ── Integrations ────────────────────────────────────────────────────────────
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+export FZF_CTRL_R_COMMAND=""  # atuin owns Ctrl-R
+source <(fzf --zsh)
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(direnv hook zsh)"
+eval "$(zellij setup --generate-auto-start zsh)"
+
+function y() {
+  local tmp="$(mktemp -t yazi-cwd.XXXXXX)" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
+[ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ] && source <(/Applications/Tailscale.app/Contents/MacOS/Tailscale completion zsh)
+
+source "$HOME/.config/shell/functions.sh"
