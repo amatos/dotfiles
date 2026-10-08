@@ -1,82 +1,347 @@
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+# ~/.config/starship.toml
 
-[golang]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+# Default is 500ms — bump to 1s so custom modules whose `when`/`command` shells
+# out (e.g. `[custom.tztime]` with `when = "true"`) don't trip the WARN on
+# slower-starting shells (xonsh, in particular, has measurable subprocess
+# overhead vs zsh).
+command_timeout = 1000
 
-[php]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = """
+$battery\
+${custom.tztime}\
+$username\
+$hostname\
+$directory\
+$memory_usage\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$kubernetes\
+$helm\
+$terraform\
+$pulumi\
+$azure\
+$gcloud\
+$aws\
+$docker_context\
+$env_var\
+$golang\
+$nodejs\
+$java\
+$ruby\
+$rust\
+$python\
+$cmd_duration\
+$status\
+$sudo\
+$line_break\
+$shell \
+$character"""
 
-[java]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+# Move the directory to the second line
+#format="$all$directory$character"
 
-[kotlin]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+[custom.tztime]
+# with day and month
+# command = 'date+"%a-%d-%h %H:%M:%S(%Z)"'
+command = 'date +"%H:%M:%S[%Z]"'
+when = "true"
+style = "yellow"
+format = '[$symbol($output)]($style) '
 
-[haskell]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
-
-[python]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:comment"
-format = '[[ $symbol( $context) ](fg:crust bg:comment)]($style)'
-
-[conda]
-symbol = "  "
-style = "fg:crust bg:comment"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
-
-[time]
-disabled = false
-time_format = "%_I:%M %p"
-style = "bg:comment"
-format = '[[  $time ](fg:crust bg:comment)]($style)'
-
-[line_break]
+[custom.uptime]
+command = "uptime-mine"
+format = "[$symbol($output)](green)"
 disabled = true
 
-[character]
+[line_break]
 disabled = false
-success_symbol = '[λ](bold fg:green)'
-error_symbol = '[λ](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:purple)'
-vimcmd_replace_symbol = '[❮](bold fg:purple)'
-vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[shell]
+bash_indicator = "🐚"
+zsh_indicator = "🦓"
+fish_indicator = "🐟"
+xonsh_indicator = "🐍"
+powershell_indicator = "_"
+unknown_indicator = "mystery shell"
+format = '[$indicator](fg:white)'
+disabled = false
+
+[status]
+style = "bg:#CC99CC"
+symbol = "🔴"
+format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style)'
+map_symbol = true
+disabled = false
+
+[sudo]
+style = "bold red"
+symbol = "🧙 "
+disabled = false
+allow_windows = true
+format = "$symbol($style)"
+
+[hostname]
+ssh_only = false
+trim_at = ".companyname.com"
+disabled = false
+format =  "@[$hostname](bold red):"
+
+[username]
+# style_user = "fg:#CC99CC"
+# style_root = "white"
+style_user = "bold green"
+style_root = "black red"
+show_always = true
+format = "[$user]($style)"
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
+vicmd_symbol = "[V](bold green) "
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold #f57800"
+read_only = "🔒"
+read_only_style = "red"
+truncation_symbol = "…/"
+truncation_length = 3
+truncate_to_repo = true
+
+[time]
+time_format = "%R"
+format = "🕙 $time($style) "
+style = "bright-white"
+disabled = true
+
+[memory_usage]
+disabled = false
+format = "$symbol [${ram_pct}(|${swap_pct})]($style) "
+threshold = -1
+symbol = "🐏"
+#style = "bold dimmed green"
+style = "fg:#E29191"
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡ "
+discharging_symbol = "💀 "
+
+[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
+threshold = 100
+style = "bold yellow"
+
+#[env_var.SHELL]
+#variable = "SHELL"
+#default = "unknown shell"
+#[env_var.USER]
+#default = "unknown user"
+
+#[kubernetes]
+#format = ' [⛵ $context \($namespace\)](bold #2b6fe5) '
+#disabled = false
+#[kubernetes.context_aliases]
+### #"1638984036096877000@clifford-bitso-testing.us-east-2.eksctl.io" = "bitso-preview"
+### "1641398995784490000@clifford-bitso-testing.us-east-2.eksctl.io" = "B-sandbox-testing"
+### "1638984036096877000@clifford-bitso-preview.us-east-2.eksctl.io" = "B-sandox-preview"
+### "1642432029804960643@frank-bitso-testing.us-east-2.eksctl.io" = "B-sandbox-frankp-test"
+### "arn:aws:eks:us-east-2:868916603938:cluster/preview-environments" = "B-preview-envs"
+### "frank@weave.works@preview-environments.us-east-2.eksctl.io" = "preview-environments"
+## teleport-dev-dev.aws.1234567890.us-east-2.controlplane
+#'teleport-[^-]*-(?P<env>[^.]*)\.(?P<cloud>[^.]*)\.(?P<account>[^.]*)\.(?P<region>[^.]*)\.(?P<plane>[^.]*)' = '$env $plane ☁️ $cloud 🌎 $region 🏛️ $account'
+#'teleport-[^-]*-(?P<env>[^.]*)\.(?P<cloud>[^.]*)\.(?P<account>[^.]*)\.(?P<region>[^.]*)\.(?P<plane>[^.]*)\.classic\.(?P<tenant>.*)' = '$env classic ☁️ $cloud 🌎 $region 🏛️ $account 🏠 $tenant'
+
+[kubernetes]
+format = ' [⛵ $context ($namespace)](bold #2b6fe5) '
+disabled = false
+
+#[[kubernetes.contexts]]
+#context = 'teleport-[^-]*-(?P<env>[^.]*)\.(?P<cloud>[^.]*)\.(?P<account>[^.]*)\.(?P<region>[^.]*)\.(?P<plane>[^.]*)'
+#context_alias = '$env $plane ☁️ $cloud 🌎 $region 🏛️ $account'
+#
+#[[kubernetes.contexts]]
+#context = 'teleport-[^-]*-(?P<env>[^.]*)\.(?P<cloud>[^.]*)\.(?P<account>[^.]*)\.(?P<region>[^.]*)\.(?P<plane>[^.]*)\.classic\.(?P<tenant>.*)'
+#context_alias = '$env classic ☁️ $cloud 🌎 $region 🏛️ $account 🏠 $tenant'
+
+
+
+
+[docker_context]
+format = "[🐋 $context](blue bold)"
+
+[aws]
+format = ' [$symbol ($profile )(\($region\) )]($style)'
+style = "bold blue"
+symbol = "🟧"
+[aws.region_aliases]
+us-east-2 = "US:E:2"
+us-west-2 = "US:W:2"
+eu-west-2 = "EU:W:2"
+
+[gcloud]
+format = '[$symbol $account(@$domain)(\($region\))]($style) '
+symbol = "⛅"
+[gcloud.region_aliases]
+us-central1 = "uc1"
+asia-northeast1 = "an1"
+
+[azure]
+disabled = false
+format = "[$symbol ($subscription)]($style) "
+symbol = "🔷"
+style = "blue bold"
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 8
+truncation_symbol = ""
+style = "bold yellow"
+
+#format = " [$branch]($style) "
+#symbol = "🍣 "
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style)'
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[git_status]
+conflicted = "💥 "
+ahead = "🚀 x${count}"
+behind = "🐢 x${count}"
+diverged = "🔱 🚀 x${ahead_count} 🐢 x${behind_count}"
+untracked = "🚧 x${count}"
+stashed = "📦 "
+modified = "📝 x${count}"
+staged = "📥 x${count}"
+renamed = "📛 x${count}"
+deleted = "❌ x${count}"
+style = "bright-white"
+format = "$all_status$ahead_behind"
+
+[terraform]
+format = "[🧱 $version$workspace]($style)"
+
+[pulumi]
+format = "[🚢 ($version )$stack]($style)"
+
+[helm]
+format = "[⎈ $version](bold white) "
+
+[rust]
+format = "[🦀 $version](red bold)"
+
+[python]
+symbol = "👾 "
+pyenv_version_name = true
+# Display the version of python from inside a local venv.
+#
+# Note this will only work when the venv is inside the project and it will only
+# work in the directory that contains the venv dir but maybe this is ok?
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+
+[nodejs]
+format = "[🤖 $version](bold green)"
+
+[golang]
+format = "[🐹 $version](bold cyan)"
 
 [cmd_duration]
-show_milliseconds = true
-format = " in $duration "
-style = "bg:purple"
-disabled = false
-show_notifications = true
-min_time_to_notify = 45000
+min_time = 500
+format = " [$duration](bold yellow)"
 
-[palettes.dracula]
-pink = "#ff79c6"
-red = "#ff5555"
-yellow = "#f1fa8c"
-green = "#50fa7b"
-blue = "#644ac9"
-purple = "#bd93f9"
-cyan = "#8be9fd"
-comment = "#6272a4"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+#🐍🅒🐹💎🌳☸️(📦🔋⚡️💀🔒
 
+
+
+#### Disabled modules ####
+
+# add these back to format if you want them:
+# $time\
+# $hg_branch\
+# $dart\
+# $dotnet\
+# $elixir\
+# $elm\
+# $erlang\
+# $golang\
+# $helm\
+# $java\
+# $julia\
+# $kotlin\
+# $nim\
+# $ocaml\
+# $php\
+# $purescript\
+# $swift\
+# $zig\
+# $memory_usage\
+# $gcloud\
+# $openstack\
+# $crystal\
+# $lua\
+# $jobs\
+# $battery\
+[hg_branch]
+disabled = true
+[dart]
+disabled = true
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+#[golang]
+#disabled = true
+#[helm]
+#disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[kotlin]
+disabled = true
+[nim]
+disabled = true
+[ocaml]
+disabled = true
+[php]
+disabled = true
+[purescript]
+disabled = true
+[swift]
+disabled = true
+[zig]
+disabled = true
+#[memory_usage]
+#disabled = true
+#[gcloud]
+#disabled = true
+[openstack]
+disabled = true
+[crystal]
+disabled = true
+[lua]
+disabled = true
+[jobs]
+disabled = true
+#[battery]
+#disabled = true
+
+# Until these get resolved, doing my own datetime with date:
+# https://github.com/starship/starship/discussions/2360#discussioncomment-391911
+# https://github.com/chronotope/chrono/issues/288
+# format = '[\[$time\]](green) '
+# time_format = "%a %b %d %Y %l:%M%p (%z)"
