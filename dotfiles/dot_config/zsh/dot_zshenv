@@ -1,0 +1,2 @@
+# Ansible managed
+. "$HOME/.config/shell/env.sh"
