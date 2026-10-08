@@ -7,52 +7,108 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "terminal": {
-    "font_family": "ZedMono Nerd Font Mono",
-  },
   "agent_servers": {
     "claude-acp": {
       "default_config_options": {
-        "mode": "auto"
+        "mode": "auto",
       },
       "type": "registry",
     },
   },
-  "cli_default_open_behavior": "existing_window",
-  "agent": {
-    "default_model": {
-      "effort": "high",
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-6",
-      "enable_thinking": true,
+  "auto_indent": "syntax_aware",
+  "auto_install_extensions": {
+    "dockerfile": true,
+    "dracula": true,
+    "env": true,
+    "git-firefly": true,
+    "helm": true,
+    "html": true,
+    "java-eclipse-jdtls": true,
+    "just": true,
+    "lua": true,
+    "make": true,
+    "marksman": true,
+    "material-icon-theme": true,
+    "mermaid": true,
+    "nix": true,
+    "ruby": true,
+    "sql": true,
+    "terraform": true,
+    "toml": true,
+    "typst": true,
+    "vscode-dark": true,
+    "vscode-light": true,
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
     },
-    "favorite_models": [],
-    "model_parameters": [],
   },
-  "base_keymap": "SublimeText",
-  "minimap": {
-    "show": "always",
-  },
-  "auto_signature_help": true,
-  "proxy": "",
-  "ui_font_size": 16,
+  "base_keymap": "Zed",
+  "buffer_font_family": ".ZedMono",
   "buffer_font_size": 15,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
-  },
-  "language_models": {
-    "ollama": {
-      "api_url": "http://gammu.ts.matos.cc:11434",
-      "available_models": [
-        {
-          "name": "qwen2.5-coder:14b",
-          "display_name": "Qwen 2.5 Coder 14B",
-          "max_tokens": 32768,
-          "supports_tools": true,
-        },
-      ],
+  "confirm_quit": false,
+  "ensure_final_newline_on_save": true,
+  "format_on_save": "on",
+  "git": {
+    "inline_blame": {
+      "enabled": true,
     },
   },
+  "icon_theme": {
+    "dark": "Colored Zed Icons Theme Dark",
+    "light": "Colored Zed Icons Theme Light",
+    "mode": "system",
+  },
+  "indent_guides": {
+    "enabled": true,
+  },
+  "languages": {
+    "Nix": {
+      "language_servers": ["nil", "!nixd"],
+    },
+  },
+  "lsp": {
+    "nil": {
+      "initialization_options": {
+        "nix": {
+          "flake": {
+            "autoArchive": false,
+            "autoEvalInputs": false,
+          },
+        },
+      },
+    },
+  },
+  "preferred_line_length": 100,
+  "remove_trailing_whitespace_on_save": true,
+  "scrollbar": {
+    "show": "auto",
+  },
+  "show_whitespaces": "selection",
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true,
+  },
+  "terminal": {
+    "copy_on_select": true,
+    "font_family": "JetBrainsMono Nerd Font",
+    "font_size": 13,
+    "shell": {
+      "program": "fish",
+    },
+  },
+  "theme": {
+    "dark": "Dracula Solid",
+    "light": "Dracula Light (Alucard",
+    "mode": "system",
+  },
+  "ui_font_size": 16,
+  "vim_mode": false,
 }
